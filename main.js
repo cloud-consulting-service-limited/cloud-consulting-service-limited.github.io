@@ -33,6 +33,8 @@ var map = {
 	"./bm": "./node_modules/moment/locale/bm.js",
 	"./bm.js": "./node_modules/moment/locale/bm.js",
 	"./bn": "./node_modules/moment/locale/bn.js",
+	"./bn-bd": "./node_modules/moment/locale/bn-bd.js",
+	"./bn-bd.js": "./node_modules/moment/locale/bn-bd.js",
 	"./bn.js": "./node_modules/moment/locale/bn.js",
 	"./bo": "./node_modules/moment/locale/bo.js",
 	"./bo.js": "./node_modules/moment/locale/bo.js",
@@ -81,6 +83,8 @@ var map = {
 	"./es": "./node_modules/moment/locale/es.js",
 	"./es-do": "./node_modules/moment/locale/es-do.js",
 	"./es-do.js": "./node_modules/moment/locale/es-do.js",
+	"./es-mx": "./node_modules/moment/locale/es-mx.js",
+	"./es-mx.js": "./node_modules/moment/locale/es-mx.js",
 	"./es-us": "./node_modules/moment/locale/es-us.js",
 	"./es-us.js": "./node_modules/moment/locale/es-us.js",
 	"./es.js": "./node_modules/moment/locale/es.js",
@@ -441,6 +445,11 @@ var navItems = [
         name: 'Other CS',
         url: '/othercs',
         icon: 'icon-speedometer'
+    },
+    {
+        name: 'load sample',
+        url: '/loaddata',
+        icon: 'icon-speedometer'
     }
 ];
 
@@ -519,7 +528,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_routing__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./app.routing */ "./src/app/app.routing.ts");
 /* harmony import */ var ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ngx-bootstrap/dropdown */ "./node_modules/ngx-bootstrap/dropdown/fesm5/ngx-bootstrap-dropdown.js");
 /* harmony import */ var ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ngx-bootstrap/tabs */ "./node_modules/ngx-bootstrap/tabs/fesm5/ngx-bootstrap-tabs.js");
-/* harmony import */ var ng2_charts__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ng2-charts */ "./node_modules/ng2-charts/fesm5/ng2-charts.js");
+/* harmony import */ var ng2_charts__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ng2-charts */ "./node_modules/ng2-charts/fesm2015/ng2-charts.js");
 
 
 
@@ -658,11 +667,11 @@ var routes = [
         children: [
             {
                 path: 'base',
-                loadChildren: function () { return Promise.all(/*! import() | views-base-base-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~c94a7939"), __webpack_require__.e("default~views-base-base-module~views-newaccount-newaccount-module"), __webpack_require__.e("views-base-base-module")]).then(__webpack_require__.bind(null, /*! ./views/base/base.module */ "./src/app/views/base/base.module.ts")).then(function (m) { return m.BaseModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-base-base-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-audit-audit-module~views-base-base-module~views-newaccount-newaccount-module"), __webpack_require__.e("views-base-base-module")]).then(__webpack_require__.bind(null, /*! ./views/base/base.module */ "./src/app/views/base/base.module.ts")).then(function (m) { return m.BaseModule; }); }
             },
             {
                 path: 'buttons',
-                loadChildren: function () { return Promise.all(/*! import() | views-buttons-buttons-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~c94a7939"), __webpack_require__.e("views-buttons-buttons-module")]).then(__webpack_require__.bind(null, /*! ./views/buttons/buttons.module */ "./src/app/views/buttons/buttons.module.ts")).then(function (m) { return m.ButtonsModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-buttons-buttons-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("views-buttons-buttons-module")]).then(__webpack_require__.bind(null, /*! ./views/buttons/buttons.module */ "./src/app/views/buttons/buttons.module.ts")).then(function (m) { return m.ButtonsModule; }); }
             },
             {
                 path: 'charts',
@@ -670,47 +679,47 @@ var routes = [
             },
             {
                 path: 'dashboard',
-                loadChildren: function () { return Promise.all(/*! import() | views-dashboard-dashboard-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~c94a7939"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~b95227f9"), __webpack_require__.e("views-dashboard-dashboard-module")]).then(__webpack_require__.bind(null, /*! ./views/dashboard/dashboard.module */ "./src/app/views/dashboard/dashboard.module.ts")).then(function (m) { return m.DashboardModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-dashboard-dashboard-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-dashboard-dashboard-module")]).then(__webpack_require__.bind(null, /*! ./views/dashboard/dashboard.module */ "./src/app/views/dashboard/dashboard.module.ts")).then(function (m) { return m.DashboardModule; }); }
             },
             {
                 path: 'jobs',
-                loadChildren: function () { return Promise.all(/*! import() | views-jobs-jobs-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~c94a7939"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~b95227f9"), __webpack_require__.e("default~views-jobs-jobs-module~views-newaccount-newaccount-module"), __webpack_require__.e("views-jobs-jobs-module")]).then(__webpack_require__.bind(null, /*! ./views/jobs/jobs.module */ "./src/app/views/jobs/jobs.module.ts")).then(function (m) { return m.JobsModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-jobs-jobs-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("default~views-audit-audit-module~views-jobs-jobs-module~views-newaccount-newaccount-module"), __webpack_require__.e("views-jobs-jobs-module")]).then(__webpack_require__.bind(null, /*! ./views/jobs/jobs.module */ "./src/app/views/jobs/jobs.module.ts")).then(function (m) { return m.JobsModule; }); }
             },
             {
                 path: 'accounting',
-                loadChildren: function () { return Promise.all(/*! import() | views-accounting-accounting-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~c94a7939"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~b95227f9"), __webpack_require__.e("views-accounting-accounting-module")]).then(__webpack_require__.bind(null, /*! ./views/accounting/accounting.module */ "./src/app/views/accounting/accounting.module.ts")).then(function (m) { return m.AccountingModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-accounting-accounting-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-accounting-accounting-module")]).then(__webpack_require__.bind(null, /*! ./views/accounting/accounting.module */ "./src/app/views/accounting/accounting.module.ts")).then(function (m) { return m.AccountingModule; }); }
             },
             {
                 path: 'report',
-                loadChildren: function () { return Promise.all(/*! import() | views-report-report-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~c94a7939"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~b95227f9"), __webpack_require__.e("views-report-report-module")]).then(__webpack_require__.bind(null, /*! ./views/report/report.module */ "./src/app/views/report/report.module.ts")).then(function (m) { return m.ReportModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-report-report-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-report-report-module")]).then(__webpack_require__.bind(null, /*! ./views/report/report.module */ "./src/app/views/report/report.module.ts")).then(function (m) { return m.ReportModule; }); }
             },
             {
                 path: 'ro',
-                loadChildren: function () { return Promise.all(/*! import() | views-ro-ro-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~c94a7939"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~b95227f9"), __webpack_require__.e("views-ro-ro-module")]).then(__webpack_require__.bind(null, /*! ./views/ro/ro.module */ "./src/app/views/ro/ro.module.ts")).then(function (m) { return m.RoModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-ro-ro-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-ro-ro-module")]).then(__webpack_require__.bind(null, /*! ./views/ro/ro.module */ "./src/app/views/ro/ro.module.ts")).then(function (m) { return m.RoModule; }); }
             },
             {
                 path: 'docio',
-                loadChildren: function () { return Promise.all(/*! import() | views-docio-docio-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~c94a7939"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~b95227f9"), __webpack_require__.e("views-docio-docio-module")]).then(__webpack_require__.bind(null, /*! ./views/docio/docio.module */ "./src/app/views/docio/docio.module.ts")).then(function (m) { return m.DocioModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-docio-docio-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-docio-docio-module")]).then(__webpack_require__.bind(null, /*! ./views/docio/docio.module */ "./src/app/views/docio/docio.module.ts")).then(function (m) { return m.DocioModule; }); }
             },
             {
                 path: 'taxreturn',
-                loadChildren: function () { return Promise.all(/*! import() | views-taxreturn-taxreturn-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~c94a7939"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~b95227f9"), __webpack_require__.e("views-taxreturn-taxreturn-module")]).then(__webpack_require__.bind(null, /*! ./views/taxreturn/taxreturn.module */ "./src/app/views/taxreturn/taxreturn.module.ts")).then(function (m) { return m.TaxreturnModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-taxreturn-taxreturn-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-taxreturn-taxreturn-module")]).then(__webpack_require__.bind(null, /*! ./views/taxreturn/taxreturn.module */ "./src/app/views/taxreturn/taxreturn.module.ts")).then(function (m) { return m.TaxreturnModule; }); }
             },
             {
                 path: 'newaccount',
-                loadChildren: function () { return Promise.all(/*! import() | views-newaccount-newaccount-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~c94a7939"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~b95227f9"), __webpack_require__.e("default~views-jobs-jobs-module~views-newaccount-newaccount-module"), __webpack_require__.e("default~views-newaccount-newaccount-module~views-notifications-notifications-module"), __webpack_require__.e("default~views-base-base-module~views-newaccount-newaccount-module"), __webpack_require__.e("views-newaccount-newaccount-module")]).then(__webpack_require__.bind(null, /*! ./views/newaccount/newaccount.module */ "./src/app/views/newaccount/newaccount.module.ts")).then(function (m) { return m.NewaccountModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-newaccount-newaccount-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("default~views-audit-audit-module~views-jobs-jobs-module~views-newaccount-newaccount-module"), __webpack_require__.e("default~views-audit-audit-module~views-newaccount-newaccount-module~views-notifications-notifications-module"), __webpack_require__.e("default~views-audit-audit-module~views-base-base-module~views-newaccount-newaccount-module"), __webpack_require__.e("default~views-audit-audit-module~views-newaccount-newaccount-module"), __webpack_require__.e("views-newaccount-newaccount-module")]).then(__webpack_require__.bind(null, /*! ./views/newaccount/newaccount.module */ "./src/app/views/newaccount/newaccount.module.ts")).then(function (m) { return m.NewaccountModule; }); }
             },
             {
                 path: 'audit',
-                loadChildren: function () { return Promise.all(/*! import() | views-audit-audit-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~c94a7939"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~b95227f9"), __webpack_require__.e("views-audit-audit-module")]).then(__webpack_require__.bind(null, /*! ./views/audit/audit.module */ "./src/app/views/audit/audit.module.ts")).then(function (m) { return m.AuditModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-audit-audit-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("default~views-audit-audit-module~views-jobs-jobs-module~views-newaccount-newaccount-module"), __webpack_require__.e("default~views-audit-audit-module~views-newaccount-newaccount-module~views-notifications-notifications-module"), __webpack_require__.e("default~views-audit-audit-module~views-base-base-module~views-newaccount-newaccount-module"), __webpack_require__.e("default~views-audit-audit-module~views-newaccount-newaccount-module"), __webpack_require__.e("views-audit-audit-module")]).then(__webpack_require__.bind(null, /*! ./views/audit/audit.module */ "./src/app/views/audit/audit.module.ts")).then(function (m) { return m.AuditModule; }); }
             },
             {
                 path: 'nar1',
-                loadChildren: function () { return Promise.all(/*! import() | views-nar1-nar1-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~c94a7939"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~b95227f9"), __webpack_require__.e("views-nar1-nar1-module")]).then(__webpack_require__.bind(null, /*! ./views/nar1/nar1.module */ "./src/app/views/nar1/nar1.module.ts")).then(function (m) { return m.Nar1Module; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-nar1-nar1-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-nar1-nar1-module")]).then(__webpack_require__.bind(null, /*! ./views/nar1/nar1.module */ "./src/app/views/nar1/nar1.module.ts")).then(function (m) { return m.Nar1Module; }); }
             },
             {
                 path: 'othercs',
-                loadChildren: function () { return Promise.all(/*! import() | views-othercs-othercs-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~c94a7939"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~b95227f9"), __webpack_require__.e("views-othercs-othercs-module")]).then(__webpack_require__.bind(null, /*! ./views/othercs/othercs.module */ "./src/app/views/othercs/othercs.module.ts")).then(function (m) { return m.OthercsModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-othercs-othercs-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-othercs-othercs-module")]).then(__webpack_require__.bind(null, /*! ./views/othercs/othercs.module */ "./src/app/views/othercs/othercs.module.ts")).then(function (m) { return m.OthercsModule; }); }
             },
             {
                 path: 'icons',
@@ -718,11 +727,15 @@ var routes = [
             },
             {
                 path: 'notifications',
-                loadChildren: function () { return Promise.all(/*! import() | views-notifications-notifications-module */[__webpack_require__.e("default~views-newaccount-newaccount-module~views-notifications-notifications-module"), __webpack_require__.e("views-notifications-notifications-module")]).then(__webpack_require__.bind(null, /*! ./views/notifications/notifications.module */ "./src/app/views/notifications/notifications.module.ts")).then(function (m) { return m.NotificationsModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-notifications-notifications-module */[__webpack_require__.e("default~views-audit-audit-module~views-newaccount-newaccount-module~views-notifications-notifications-module"), __webpack_require__.e("views-notifications-notifications-module")]).then(__webpack_require__.bind(null, /*! ./views/notifications/notifications.module */ "./src/app/views/notifications/notifications.module.ts")).then(function (m) { return m.NotificationsModule; }); }
             },
             {
                 path: 'theme',
                 loadChildren: function () { return Promise.all(/*! import() | views-theme-theme-module */[__webpack_require__.e("default~views-theme-theme-module~views-widgets-widgets-module"), __webpack_require__.e("views-theme-theme-module")]).then(__webpack_require__.bind(null, /*! ./views/theme/theme.module */ "./src/app/views/theme/theme.module.ts")).then(function (m) { return m.ThemeModule; }); }
+            },
+            {
+                path: 'loaddata',
+                loadChildren: function () { return Promise.all(/*! import() | views-loaddata-loaddata-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-loaddata-loaddata-module")]).then(__webpack_require__.bind(null, /*! ./views/loaddata/loaddata.module */ "./src/app/views/loaddata/loaddata.module.ts")).then(function (m) { return m.LoaddataModule; }); }
             },
             {
                 path: 'widgets',
@@ -997,7 +1010,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /ng-righteous-wf/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /nodeVolume/src/main.ts */"./src/main.ts");
 
 
 /***/ })
