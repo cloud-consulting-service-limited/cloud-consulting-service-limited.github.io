@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"animated fadeIn\">\n  <h1 class=\"display-3\">Pre Audit Docuemnt (S1)</h1>\n  <hr />\n  <accordion>\n    <accordion-group heading=\"Customer Document Upload History\" [isOpen]=\"false\">\n      <ngx-datatable class=\"bootstrap \" [headerHeight]=\"50\" [limit]=\"3\" [messages]=\"{emptyMessage:''}\"\n        [columnMode]=\"'force'\" [footerHeight]=\"30\" [rowHeight]=\"'auto'\" [rows]=\"auditInfo['documentsUploaded']\"\n        [scrollbarH]=\"true\">\n        <ngx-datatable-column name=\"#\" [sortable]=\"false\" maxWidth=\"40\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <label>{{rowIndex+1}}</label>\n          </ng-template>\n        </ngx-datatable-column>\n        <ngx-datatable-column name=\"File Type\" [sortable]=\"false\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <label class=\"form-control\">File Type</label>\n          </ng-template>\n        </ngx-datatable-column>\n        <ngx-datatable-column name=\"File Name\" [sortable]=\"false\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <label class=\"form-control\">File Name</label>\n          </ng-template>\n        </ngx-datatable-column>\n        <ngx-datatable-column name=\"Uploaded Date\" [sortable]=\"false\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <label class=\"form-control\"></label>\n          </ng-template>\n        </ngx-datatable-column>\n      </ngx-datatable>\n    </accordion-group>\n\n    <accordion-group [heading]=\"documentContentHeader\" [isOpen]=\"true\">\n\n      <div class=\"container\">\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"inputEmail4\">English</label>\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"inputEmail4\">中文</label>\n          </div>\n          <div class=\"form-group col-md-1\">\n            <label for=\"inputEmail4\">Ask</label>\n          </div>\n          <div class=\"form-group col-md-1\">\n            <label for=\"inputEmail4\">Uploaded</label>\n          </div>\n          <div class=\"form-group col-md-2\">\n            <label for=\"inputEmail4\">Checked</label>\n          </div>\n        </div>\n\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-12\">\n            <hr />\n          </div>\n        </div>\n        <div class=\"form-row\" *ngFor=\"let item of documentRequestList ; let i = index\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"inputEmail4\">{{item[\"English\"]}}</label>\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"inputEmail4\">{{item[\"Chinese\"]}}</label>\n          </div>\n          <div class=\"form-group col-md-1\">\n            <input type=\"checkbox\" [(ngModel)]=\"this.documentRequestList[i]['Asked']\" />\n          </div>\n          <div class=\"form-group col-md-1\">\n            <label *ngIf=\"this.documentRequestList[i]['Uploaded']\"> &#10004; </label>\n          </div>\n          <div class=\"form-group col-md-2\">\n            <input type=\"checkbox\" [(ngModel)]=\"this.documentRequestList[i]['Checked']\" />\n          </div>\n        </div>\n\n        <button type=\"submit\" class=\"btn btn-primary\" (click)=\"requestDocument()\" *ngIf=\"!this.document['sentDate']\"> Send Document\n          Reques to Client</button>\n        <button type=\"submit\" class=\"btn btn-primary\" (click)=\"requestDocument()\" *ngIf=\"this.document['sentDate']\"> Resend\n          Additional Document Request</button>\n        <button type=\"submit\" class=\"btn btn-primary\" (click)=\"confirmDocument()\"\n          *ngIf=\"this.document['sentDate']\">Documents Confirmed</button>\n\n        <ng-template #documentSentMsgTemplate>\n          <div class=\"modal-header\">\n            <h4 class=\"modal-title pull-left\">Document Sent</h4>\n            <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n              <span aria-hidden=\"true\">&times;</span>\n            </button>\n          </div>\n          <div class=\"modal-body\">\n            Document Sent\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-default\" (click)=\"modalRef.hide()\">OK</button>\n          </div>\n        </ng-template>\n\n      </div>\n    </accordion-group>\n\n    <accordion-group heading=\"Company Info\" [isOpen]=\"false\">\n      <div class=\"container\">\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-3\">\n            <label for=\"inputCompany\">Company Name :</label>\n          </div>\n          <div class=\"form-group col-md-9\">\n            <input type=\"text\" class=\"form-control\" id=\"inputCompany\" placeholder=\"\"\n              [(ngModel)]=\"accountInfo['Company Name']\" readonly>\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-3\">\n            <label for=\"inputAddress\">Email :</label>\n          </div>\n          <div class=\"form-group col-md-9\">\n            <input type=\"email\" class=\"form-control\" id=\"inputAddress2\" placeholder=\"\"\n              [(ngModel)]=\"accountInfo['Email']\" readonly>\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-3\">\n            <label for=\"inputEmail4\">Name: </label>\n          </div>\n          <div class=\"form-group col-md-9\">\n            <input type=\"email\" class=\"form-control\" id=\"inputAddress2\" placeholder=\"\"\n              [(ngModel)]=\"accountInfo['Display Name']\" readonly>\n          </div>\n        </div>\n      </div>\n    </accordion-group>\n\n    <accordion-group heading=\"Document Request send History\" [isOpen]=\"false\">\n      <ngx-datatable class=\"bootstrap \" [headerHeight]=\"50\" [limit]=\"3\" [messages]=\"{emptyMessage:''}\"\n        [columnMode]=\"'force'\" [footerHeight]=\"30\" [rowHeight]=\"'auto'\" [rows]=\"auditInfo['documents']\"\n        [scrollbarH]=\"true\">\n        <ngx-datatable-column name=\"#\" [sortable]=\"false\" maxWidth=\"40\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <label>{{rowIndex+1}}</label>\n          </ng-template>\n        </ngx-datatable-column>\n        <ngx-datatable-column name=\"Sent Date\" [sortable]=\"false\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <label\n              class=\"form-control\">{{auditInfo['documents'][rowIndex]['sentDate'] | date: 'yyyy-MM-dd HH:mm:ss' }}</label>\n          </ng-template>\n        </ngx-datatable-column>\n        <ngx-datatable-column name=\"Number of Documents\" [sortable]=\"false\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <label class=\"form-control\">{{auditInfo['documents'][rowIndex]['documentAskedCount'] }}</label>\n          </ng-template>\n        </ngx-datatable-column>\n      </ngx-datatable>\n    </accordion-group>\n\n  </accordion>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"animated fadeIn\" >\n  <h1 class=\"display-3\">Pre Audit Docuemnt (S1)</h1>\n  <hr />\n  <accordion>\n    <accordion-group heading=\"Link to upload document\" [isOpen]=\"false\">\n      <a href=\"{{getLinksToUpload()}}\"  target=”_blank” >{{getLinksToUpload()}}</a>\n    </accordion-group>\n    <accordion-group heading=\"Customer Document Upload History\" [isOpen]=\"false\">\n      <ngx-datatable class=\"bootstrap \" [headerHeight]=\"50\" [limit]=\"3\" [messages]=\"{emptyMessage:''}\"\n        [columnMode]=\"'force'\" [footerHeight]=\"30\" [rowHeight]=\"'auto'\" [rows]=\"auditInfo['documentsUploaded']\"\n        [scrollbarH]=\"true\">\n        <ngx-datatable-column name=\"#\" [sortable]=\"false\" maxWidth=\"40\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <label>{{rowIndex+1}}</label>\n          </ng-template>\n        </ngx-datatable-column>\n        <ngx-datatable-column name=\"File Type\" [sortable]=\"false\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <label class=\"form-control\">{{auditInfo['documentsUploaded'][rowIndex]['File Type']}}</label>\n          </ng-template>\n        </ngx-datatable-column>\n        <ngx-datatable-column name=\"File Name\" [sortable]=\"false\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <label class=\"form-control\">{{auditInfo['documentsUploaded'][rowIndex]['File Name']}}</label>\n          </ng-template>\n        </ngx-datatable-column>\n        <ngx-datatable-column name=\"Uploaded Date\" [sortable]=\"false\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <label class=\"form-control\">{{auditInfo['documentsUploaded'][rowIndex]['Uploaded Date']}}</label>\n          </ng-template>\n        </ngx-datatable-column>\n      </ngx-datatable>\n    </accordion-group>\n\n    <accordion-group [heading]=\"documentContentHeader\" [isOpen]=\"true\">\n\n      <div class=\"container\">\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"inputEmail4\">English</label>\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"inputEmail4\">中文</label>\n          </div>\n          <div class=\"form-group col-md-1\">\n            <label for=\"inputEmail4\">Ask</label>\n          </div>\n          <div class=\"form-group col-md-1\">\n            <label for=\"inputEmail4\">Uploaded</label>\n          </div>\n          <div class=\"form-group col-md-2\">\n            <label for=\"inputEmail4\">Checked</label>\n          </div>\n        </div>\n\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-12\">\n            <hr />\n          </div>\n        </div>\n        <div class=\"form-row\" *ngFor=\"let item of documentRequestList ; let i = index\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"inputEmail4\">{{item[\"English\"]}}</label>\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"inputEmail4\">{{item[\"Chinese\"]}}</label>\n          </div>\n          <div class=\"form-group col-md-1\">\n            <input type=\"checkbox\" [(ngModel)]=\"this.documentRequestList[i]['Asked']\" />\n          </div>\n          <div class=\"form-group col-md-1\">\n            <label *ngIf=\"this.documentRequestList[i]['Uploaded']\"> &#10004; </label>\n          </div>\n          <div class=\"form-group col-md-2\">\n            <input type=\"checkbox\" [(ngModel)]=\"this.documentRequestList[i]['Checked']\" />\n          </div>\n        </div>\n\n        <button type=\"submit\" class=\"btn btn-primary\" (click)=\"requestDocument()\" *ngIf=\"!this.document['sentDate']\"> Send Document\n          Reques to Client</button>\n        <button type=\"submit\" class=\"btn btn-primary\" (click)=\"requestDocument()\" *ngIf=\"this.document['sentDate']\"> Resend\n          Additional Document Request</button>\n        <button type=\"submit\" class=\"btn btn-primary\" (click)=\"confirmDocument()\"\n          *ngIf=\"this.document['sentDate']\">Documents Confirmed</button>\n\n        <ng-template #documentSentMsgTemplate>\n          <div class=\"modal-header\">\n            <h4 class=\"modal-title pull-left\">Document Sent</h4>\n            <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n              <span aria-hidden=\"true\">&times;</span>\n            </button>\n          </div>\n          <div class=\"modal-body\">\n            Document Sent\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-default\" (click)=\"modalRef.hide()\">OK</button>\n          </div>\n        </ng-template>\n\n      </div>\n    </accordion-group>\n\n    <accordion-group heading=\"Company Info\" [isOpen]=\"false\">\n      <div class=\"container\">\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-3\">\n            <label for=\"inputCompany\">Company Name :</label>\n          </div>\n          <div class=\"form-group col-md-9\">\n            <input type=\"text\" class=\"form-control\" id=\"inputCompany\" placeholder=\"\"\n              [(ngModel)]=\"accountInfo['Company Name']\" readonly>\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-3\">\n            <label for=\"inputAddress\">Email :</label>\n          </div>\n          <div class=\"form-group col-md-9\">\n            <input type=\"email\" class=\"form-control\" id=\"inputAddress2\" placeholder=\"\"\n              [(ngModel)]=\"accountInfo['Email']\" readonly>\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-3\">\n            <label for=\"inputEmail4\">Name: </label>\n          </div>\n          <div class=\"form-group col-md-9\">\n            <input type=\"email\" class=\"form-control\" id=\"inputAddress2\" placeholder=\"\"\n              [(ngModel)]=\"accountInfo['Display Name']\" readonly>\n          </div>\n        </div>\n      </div>\n    </accordion-group>\n\n    <accordion-group heading=\"Document Request send History\" [isOpen]=\"false\">\n      <ngx-datatable class=\"bootstrap \" [headerHeight]=\"50\" [limit]=\"3\" [messages]=\"{emptyMessage:''}\"\n        [columnMode]=\"'force'\" [footerHeight]=\"30\" [rowHeight]=\"'auto'\" [rows]=\"auditInfo['documents']\"\n        [scrollbarH]=\"true\">\n        <ngx-datatable-column name=\"Sent Date\" [sortable]=\"false\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <label\n              class=\"form-control\">{{auditInfo['documents'][rowIndex]['sentDate'] | date: 'yyyy-MM-dd HH:mm:ss' }}</label>\n          </ng-template>\n        </ngx-datatable-column>\n        <ngx-datatable-column name=\"Number of Documents\" [sortable]=\"false\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <label class=\"form-control\">{{auditInfo['documents'][rowIndex]['documentAskedCount'] }}</label>\n          </ng-template>\n        </ngx-datatable-column>\n      </ngx-datatable>\n    </accordion-group>\n\n  </accordion>\n</div>\n");
 
 /***/ }),
 
@@ -48,7 +48,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<div class=\"animated fadeIn\">\n    <!-- \n  <h1 class=\"display-3\">TB</h1>\n  <hr />\n\n  <accordion>\n    <accordion-group heading=\"TB\" [isOpen]=\"true\">\n      -->\n      <table class=\"table-condensed\">\n        <thead>\n          <tr class=\"table-condensed\">\n            <th >#</th>\n            <th >Account break down</th>\n            <th >Group as per audit record</th>\n            <th >Last Year Audit</th>\n            <th >Current Year Per Client</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr *ngFor=\"let row of thisTB; index as i\" class=\"table-condensed\" >\n            <td class=\"table-condensed\">{{i}}</td>\n            <td class=\"table-condensed\" width=\"300px\"><input style=\"width:100%\" id=\"input{{i*3}}\" type=\"text\" class=\".input-sm\" [(ngModel)]='row[\"Account break down\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }}\" (keyup.enter)=\"keytab($event)\" /></td>\n            <td class=\"table-condensed\" width=\"300px\"><input style=\"width:100%\" type=\"text\" class=\".input-sm\" [(ngModel)]='row[\"Group as per audit record\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }}\" (keyup.enter)=\"keytab($event)\" readonly /></td>\n            <td class=\"table-condensed\" width=\"200px\"><input style=\"width:100%\" id=\"input{{i*3+1}}\"  type=\"number\" step=\"1.0\"  class=\".input-sm\" [(ngModel)]='row[\"Last Year Audit\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }}\" (keyup.enter)=\"keytab($event)\" /></td>\n            <td class=\"table-condensed\" width=\"200px\"><input style=\"width:100%\" id=\"input{{i*3+2}}\"  type=\"number\" step=\"1.0\"  class=\".input-sm\" [(ngModel)]='row[\"Current Year Pe Client\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }}\" (keyup.enter)=\"keytab($event)\" /></td>\n            <!-- \n            <td class=\"table-condensed\"> \n              \n              <accordion>\n                <accordion-group [isOpen]=\"false\" [panelClass]=\"customClass\">\n                  <span accordion-heading>\n                    {{ getAdjustmentForHeader(row[\"Current Year Adjustment\"]) }}\n                  </span>\n                  <div class=\"input-group \">\n                    <div class=\"input-group-prepend \">\n                      <span class=\"input-group-text \"\n                        style=\"width: 150px;\">{{row[\"Current Year Adjustment\"][0][\"name\"]}}</span>\n                    </div>\n                    <input type=\"number\" step=\"1.0\" class=\".input-sm\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='row[\"Current Year Adjustment\"][0][\"value\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }}\"/>\n                  </div>\n                  <div class=\"input-group \">\n                    <div class=\"input-group-prepend\">\n                      <span class=\"input-group-text\"\n                        style=\"width: 150px;\">{{row[\"Current Year Adjustment\"][1][\"name\"]}}</span>\n                    </div>\n                    <input type=\"number\" step=\"1.0\" class=\".input-sm\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='row[\"Current Year Adjustment\"][1][\"value\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }}\"/>\n                  </div>\n                  <div class=\"input-group \">\n                    <div class=\"input-group-prepend\">\n                      <span class=\"input-group-text\"\n                        style=\"width: 150px;\">{{row[\"Current Year Adjustment\"][2][\"name\"]}}</span>\n                    </div>\n                    <input type=\"number\" step=\"1.0\" class=\".input-sm\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='row[\"Current Year Adjustment\"][2][\"value\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }}\"/>\n                  </div>\n                  <div class=\"input-group \">\n                    <div class=\"input-group-prepend\">\n                      <span class=\"input-group-text\"\n                        style=\"width: 150px;\">{{row[\"Current Year Adjustment\"][3][\"name\"]}}</span>\n                    </div>\n                    <input type=\"number\" step=\"1.0\" class=\".input-sm\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='row[\"Current Year Adjustment\"][3][\"value\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 } }\"/>\n                  </div>\n                  <div class=\"input-group \">\n                    <div class=\"input-group-prepend\">\n                      <input type=\"text\" class=\".input-sm\" style=\"width: 150px;\" aria-describedby=\"basic-addon3\"\n                      [(ngModel)]='row[\"Current Year Adjustment\"][4][\"name\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }\"/>\n                    </div>\n                    <input type=\"number\" step=\"1.0\" class=\".input-sm\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='row[\"Current Year Adjustment\"][4][\"value\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }\"/>\n                  </div>\n                  <div class=\"input-group \">\n                    <div class=\"input-group-prepend\">\n                      <input type=\"text\" class=\".input-sm\" style=\"width: 150px;\" aria-describedby=\"basic-addon3\"\n                      [(ngModel)]='row[\"Current Year Adjustment\"][5][\"name\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }\"/>\n                    </div>\n                    <input type=\"number\" step=\"1.0\" class=\".input-sm\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='row[\"Current Year Adjustment\"][5][\"value\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }\"/>\n                  </div>\n                </accordion-group>\n              </accordion>\n              \n            </td>\n            \n            <td class=\"table-condensed\"><input type=\"text\" class=\".input-sm\" [(ngModel)]='row[\"Current Year Audit\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }\"/></td>\n          -->\n          </tr>\n          <tr >\n            <td class=\"table-condensed\" colspan=\"5\"><hr/></td>\n          </tr>\n          <tr >\n            <td class=\"table-condensed\">(Profit)/ Loss</td>\n            <td class=\"table-condensed\" width=\"300px\"></td>\n            <td class=\"table-condensed\" width=\"300px\"></td>\n            <td class=\"table-condensed\" width=\"200px\">{{getSumLA() | number:'2.2-2'}}</td>\n            <td class=\"table-condensed\" width=\"200px\">{{getSumCA() | number:'2.2-2'}}</td>\n          </tr>\n        </tbody>\n      </table>\n      <!-- \n      <ngx-datatable class=\"bootstrap \" [headerHeight]=\"50\" [messages]=\"{emptyMessage:''}\" [columnMode]=\"'force'\"\n        [footerHeight]=\"0\" [rowHeight]=\"'auto'\" [rows]=\"thisTB\" [scrollbarH]=\"true\">\n\n\n        <ngx-datatable-column [sortable]=\"false\" maxWidth=\"40\" name=\"#\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <label>{{ rowIndex}}</label>\n          </ng-template>\n        </ngx-datatable-column>\n\n        <ngx-datatable-column [sortable]=\"false\" maxWidth=\"250\" name=\"Account break down\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <input type=\"text\" class=\"form-control\" id=\"basic-url\" aria-describedby=\"basic-addon3\"\n              [(ngModel)]='thisTB[rowIndex][\"Account break down\"]' />\n          </ng-template>\n        </ngx-datatable-column>\n\n        <ngx-datatable-column [sortable]=\"false\" maxWidth=\"250\" name=\"Group as per audit record\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <input type=\"text\" class=\"form-control\" id=\"basic-url\" aria-describedby=\"basic-addon3\"\n            [(ngModel)]='thisTB[rowIndex][\"Group as per audit record\"]' readonly />\n          </ng-template>\n        </ngx-datatable-column>\n\n        <ngx-datatable-column [sortable]=\"false\" maxWidth=\"100\" name=\"Last Year Audit\" aria-label=\"Last Year Audit\">\n          <ng-template let-column=\"column\" ngx-datatable-header-template>\n            <div class=\"text-center\"> Last Year <br> Audit </div>\n          </ng-template>\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <input type=\"text\" class=\"form-control\" id=\"basic-url\" aria-describedby=\"basic-addon3\"\n            [(ngModel)]='thisTB[rowIndex][\"Last Year Audit\"]' />\n          </ng-template>\n        </ngx-datatable-column>\n\n        <ngx-datatable-column [sortable]=\"false\" maxWidth=\"100\" name=\"Current Year Per Client\">\n          <ng-template let-column=\"column\" ngx-datatable-header-template>\n            <div class=\"text-center\"> Current Year <br> Per Client </div>\n          </ng-template>\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <input type=\"text\" class=\"form-control\" id=\"basic-url\" aria-describedby=\"basic-addon3\"\n            [(ngModel)]='thisTB[rowIndex][\"Current Year Pe Client\"]' />\n          </ng-template>\n        </ngx-datatable-column>\n\n        <ngx-datatable-column [sortable]=\"false\" minWidth=\"300\" maxWidth=\"300\" name=\"Current Year Adjustment\">\n          <ng-template let-column=\"column\" ngx-datatable-header-template>\n            <div class=\"text-center\"> Current Year <br> Adjustment </div>\n          </ng-template>\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <accordion>\n              <accordion-group [isOpen]=\"false\" [panelClass]=\"customClass\">\n                <span accordion-heading>\n                  {{ getAdjustmentForHeader(thisTB[rowIndex][\"Current Year Adjustment\"]) }}\n                </span>\n                <div class=\"input-group \">\n                  <div class=\"input-group-prepend \">\n                    <span class=\"input-group-text \"\n                      style=\"width: 150px;\">{{thisTB[rowIndex][\"Current Year Adjustment\"][0][\"name\"]}}</span>\n                  </div>\n                  <input type=\"number\" step=\"1.0\" class=\"form-control\" aria-describedby=\"basic-addon3\"\n                  [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][0][\"value\"]' />\n                </div>\n                <div class=\"input-group \">\n                  <div class=\"input-group-prepend\">\n                    <span class=\"input-group-text\"\n                      style=\"width: 150px;\">{{thisTB[rowIndex][\"Current Year Adjustment\"][1][\"name\"]}}</span>\n                  </div>\n                  <input type=\"number\" step=\"1.0\" class=\"form-control\" aria-describedby=\"basic-addon3\"\n                  [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][1][\"value\"]' />\n                </div>\n                <div class=\"input-group \">\n                  <div class=\"input-group-prepend\">\n                    <span class=\"input-group-text\"\n                      style=\"width: 150px;\">{{thisTB[rowIndex][\"Current Year Adjustment\"][2][\"name\"]}}</span>\n                  </div>\n                  <input type=\"number\" step=\"1.0\" class=\"form-control\" aria-describedby=\"basic-addon3\"\n                  [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][2][\"value\"]' />\n                </div>\n                <div class=\"input-group \">\n                  <div class=\"input-group-prepend\">\n                    <span class=\"input-group-text\"\n                      style=\"width: 150px;\">{{thisTB[rowIndex][\"Current Year Adjustment\"][3][\"name\"]}}</span>\n                  </div>\n                  <input type=\"number\" step=\"1.0\" class=\"form-control\" aria-describedby=\"basic-addon3\"\n                  [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][3][\"value\"]' />\n                </div>\n                <div class=\"input-group \">\n                  <div class=\"input-group-prepend\">\n                    <input type=\"text\" class=\"form-control\" style=\"width: 150px;\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][4][\"name\"]' />\n                  </div>\n                  <input type=\"number\" step=\"1.0\" class=\"form-control\" aria-describedby=\"basic-addon3\"\n                  [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][4][\"value\"]' />\n                </div>\n                <div class=\"input-group \">\n                  <div class=\"input-group-prepend\">\n                    <input type=\"text\" class=\"form-control\" style=\"width: 150px;\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][5][\"name\"]' />\n                  </div>\n                  <input type=\"number\" step=\"1.0\" class=\"form-control\" aria-describedby=\"basic-addon3\"\n                  [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][5][\"value\"]' />\n                </div>\n              </accordion-group>\n            </accordion>\n          </ng-template>\n        </ngx-datatable-column>\n\n        <ngx-datatable-column [sortable]=\"false\" maxWidth=\"100\" name=\"Current Year Audit\">\n          <ng-template let-column=\"column\" ngx-datatable-header-template>\n            <div class=\"text-center\"> Current Year <br> Audit </div>\n          </ng-template>\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <input type=\"text\" class=\"form-control\" id=\"basic-url\" aria-describedby=\"basic-addon3\"\n            [(ngModel)]='thisTB[rowIndex][\"Current Year Audit\"]' />\n          </ng-template>\n        </ngx-datatable-column>\n      </ngx-datatable>\n      -->\n      <!-- \n    </accordion-group>\n    \n\n  </accordion>\n  -->\n  <hr/>\n\n  <button type=\"button\" class=\"btn btn-primary btn-lg float-left\" (click)=\"genDocSend()\" >\n    Proceed to Adjustments\n  </button>\n\n</div>\n\n<div class=\"overlay-button\">\n  <div class=\"btn-group-vertical float-right\">\n  \n\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scrollToTop()\" >\n  Top\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input228')\" >\n  Goodwill\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input495')\" >\n  Time deposits\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input576')\" >\n  Finance lease\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input690')\" >\n  Reserved 3 (equity)\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input693')\" >\n  Income\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input738')\" >\n  Cost of services\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input741')\" >\n  Other income\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input762')\" >\n  Operating expenses\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input1368')\" >\n  Finance costs\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input1386')\" >\n  Income tax expense\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input1392')\" >\n  Bottom\n</button> \n\n\n</div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<div class=\"animated fadeIn\">\n    <!-- \n  <h1 class=\"display-3\">TB</h1>\n  <hr />\n\n  <accordion>\n    <accordion-group heading=\"TB\" [isOpen]=\"true\">\n      -->\n      <table class=\"table-condensed\">\n        <thead>\n          <tr class=\"table-condensed\">\n            <th >#</th>\n            <th >Account break down</th>\n            <th >Group as per audit record</th>\n            <th >Last Year Audit</th>\n            <th >Current Year Per Client</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr *ngFor=\"let row of thisTB; index as i\" class=\"table-condensed\" >\n            <td class=\"table-condensed\">{{i}}</td>\n            <td class=\"table-condensed\" width=\"300px\"><input style=\"width:100%\" id=\"input{{i*3}}\" type=\"text\" class=\".input-sm\" [(ngModel)]='row[\"Account break down\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }}\" (keyup.enter)=\"keytab($event)\" /></td>\n            <td class=\"table-condensed\" width=\"300px\"><input style=\"width:100%\" type=\"text\" class=\".input-sm\" [(ngModel)]='row[\"Group as per audit record\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }}\" (keyup.enter)=\"keytab($event)\" readonly /></td>\n            <td class=\"table-condensed\" width=\"200px\"><input style=\"width:100%\" id=\"input{{i*3+1}}\"  type=\"number\" step=\"1.0\"  class=\".input-sm\" [(ngModel)]='row[\"Last Year Audit\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }}\" (keyup.enter)=\"keytab($event)\" /></td>\n            <td class=\"table-condensed\" width=\"200px\"><input style=\"width:100%\" id=\"input{{i*3+2}}\"  type=\"number\" step=\"1.0\"  class=\".input-sm\" [(ngModel)]='row[\"Current Year Per Client\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }}\" (keyup.enter)=\"keytab($event)\" /></td>\n            <!-- \n            <td class=\"table-condensed\"> \n              \n              <accordion>\n                <accordion-group [isOpen]=\"false\" [panelClass]=\"customClass\">\n                  <span accordion-heading>\n                    {{ getAdjustmentForHeader(row[\"Current Year Adjustment\"]) }}\n                  </span>\n                  <div class=\"input-group \">\n                    <div class=\"input-group-prepend \">\n                      <span class=\"input-group-text \"\n                        style=\"width: 150px;\">{{row[\"Current Year Adjustment\"][0][\"name\"]}}</span>\n                    </div>\n                    <input type=\"number\" step=\"1.0\" class=\".input-sm\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='row[\"Current Year Adjustment\"][0][\"value\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }}\"/>\n                  </div>\n                  <div class=\"input-group \">\n                    <div class=\"input-group-prepend\">\n                      <span class=\"input-group-text\"\n                        style=\"width: 150px;\">{{row[\"Current Year Adjustment\"][1][\"name\"]}}</span>\n                    </div>\n                    <input type=\"number\" step=\"1.0\" class=\".input-sm\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='row[\"Current Year Adjustment\"][1][\"value\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }}\"/>\n                  </div>\n                  <div class=\"input-group \">\n                    <div class=\"input-group-prepend\">\n                      <span class=\"input-group-text\"\n                        style=\"width: 150px;\">{{row[\"Current Year Adjustment\"][2][\"name\"]}}</span>\n                    </div>\n                    <input type=\"number\" step=\"1.0\" class=\".input-sm\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='row[\"Current Year Adjustment\"][2][\"value\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }}\"/>\n                  </div>\n                  <div class=\"input-group \">\n                    <div class=\"input-group-prepend\">\n                      <span class=\"input-group-text\"\n                        style=\"width: 150px;\">{{row[\"Current Year Adjustment\"][3][\"name\"]}}</span>\n                    </div>\n                    <input type=\"number\" step=\"1.0\" class=\".input-sm\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='row[\"Current Year Adjustment\"][3][\"value\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 } }\"/>\n                  </div>\n                  <div class=\"input-group \">\n                    <div class=\"input-group-prepend\">\n                      <input type=\"text\" class=\".input-sm\" style=\"width: 150px;\" aria-describedby=\"basic-addon3\"\n                      [(ngModel)]='row[\"Current Year Adjustment\"][4][\"name\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }\"/>\n                    </div>\n                    <input type=\"number\" step=\"1.0\" class=\".input-sm\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='row[\"Current Year Adjustment\"][4][\"value\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }\"/>\n                  </div>\n                  <div class=\"input-group \">\n                    <div class=\"input-group-prepend\">\n                      <input type=\"text\" class=\".input-sm\" style=\"width: 150px;\" aria-describedby=\"basic-addon3\"\n                      [(ngModel)]='row[\"Current Year Adjustment\"][5][\"name\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }\"/>\n                    </div>\n                    <input type=\"number\" step=\"1.0\" class=\".input-sm\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='row[\"Current Year Adjustment\"][5][\"value\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }\"/>\n                  </div>\n                </accordion-group>\n              </accordion>\n              \n            </td>\n            \n            <td class=\"table-condensed\"><input type=\"text\" class=\".input-sm\" [(ngModel)]='row[\"Current Year Audit\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }\"/></td>\n          -->\n          </tr>\n          <tr >\n            <td class=\"table-condensed\" colspan=\"5\"><hr/></td>\n          </tr>\n          <tr >\n            <td class=\"table-condensed\">(Profit)/ Loss</td>\n            <td class=\"table-condensed\" width=\"300px\"></td>\n            <td class=\"table-condensed\" width=\"300px\"></td>\n            <td class=\"table-condensed\" width=\"200px\">{{getSumLA() | number:'2.2-2'}}</td>\n            <td class=\"table-condensed\" width=\"200px\">{{getSumCA() | number:'2.2-2'}}</td>\n          </tr>\n        </tbody>\n      </table>\n      <!-- \n      <ngx-datatable class=\"bootstrap \" [headerHeight]=\"50\" [messages]=\"{emptyMessage:''}\" [columnMode]=\"'force'\"\n        [footerHeight]=\"0\" [rowHeight]=\"'auto'\" [rows]=\"thisTB\" [scrollbarH]=\"true\">\n\n\n        <ngx-datatable-column [sortable]=\"false\" maxWidth=\"40\" name=\"#\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <label>{{ rowIndex}}</label>\n          </ng-template>\n        </ngx-datatable-column>\n\n        <ngx-datatable-column [sortable]=\"false\" maxWidth=\"250\" name=\"Account break down\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <input type=\"text\" class=\"form-control\" id=\"basic-url\" aria-describedby=\"basic-addon3\"\n              [(ngModel)]='thisTB[rowIndex][\"Account break down\"]' />\n          </ng-template>\n        </ngx-datatable-column>\n\n        <ngx-datatable-column [sortable]=\"false\" maxWidth=\"250\" name=\"Group as per audit record\">\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <input type=\"text\" class=\"form-control\" id=\"basic-url\" aria-describedby=\"basic-addon3\"\n            [(ngModel)]='thisTB[rowIndex][\"Group as per audit record\"]' readonly />\n          </ng-template>\n        </ngx-datatable-column>\n\n        <ngx-datatable-column [sortable]=\"false\" maxWidth=\"100\" name=\"Last Year Audit\" aria-label=\"Last Year Audit\">\n          <ng-template let-column=\"column\" ngx-datatable-header-template>\n            <div class=\"text-center\"> Last Year <br> Audit </div>\n          </ng-template>\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <input type=\"text\" class=\"form-control\" id=\"basic-url\" aria-describedby=\"basic-addon3\"\n            [(ngModel)]='thisTB[rowIndex][\"Last Year Audit\"]' />\n          </ng-template>\n        </ngx-datatable-column>\n\n        <ngx-datatable-column [sortable]=\"false\" maxWidth=\"100\" name=\"Current Year Per Client\">\n          <ng-template let-column=\"column\" ngx-datatable-header-template>\n            <div class=\"text-center\"> Current Year <br> Per Client </div>\n          </ng-template>\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <input type=\"text\" class=\"form-control\" id=\"basic-url\" aria-describedby=\"basic-addon3\"\n            [(ngModel)]='thisTB[rowIndex][\"Current Year Pe Client\"]' />\n          </ng-template>\n        </ngx-datatable-column>\n\n        <ngx-datatable-column [sortable]=\"false\" minWidth=\"300\" maxWidth=\"300\" name=\"Current Year Adjustment\">\n          <ng-template let-column=\"column\" ngx-datatable-header-template>\n            <div class=\"text-center\"> Current Year <br> Adjustment </div>\n          </ng-template>\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <accordion>\n              <accordion-group [isOpen]=\"false\" [panelClass]=\"customClass\">\n                <span accordion-heading>\n                  {{ getAdjustmentForHeader(thisTB[rowIndex][\"Current Year Adjustment\"]) }}\n                </span>\n                <div class=\"input-group \">\n                  <div class=\"input-group-prepend \">\n                    <span class=\"input-group-text \"\n                      style=\"width: 150px;\">{{thisTB[rowIndex][\"Current Year Adjustment\"][0][\"name\"]}}</span>\n                  </div>\n                  <input type=\"number\" step=\"1.0\" class=\"form-control\" aria-describedby=\"basic-addon3\"\n                  [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][0][\"value\"]' />\n                </div>\n                <div class=\"input-group \">\n                  <div class=\"input-group-prepend\">\n                    <span class=\"input-group-text\"\n                      style=\"width: 150px;\">{{thisTB[rowIndex][\"Current Year Adjustment\"][1][\"name\"]}}</span>\n                  </div>\n                  <input type=\"number\" step=\"1.0\" class=\"form-control\" aria-describedby=\"basic-addon3\"\n                  [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][1][\"value\"]' />\n                </div>\n                <div class=\"input-group \">\n                  <div class=\"input-group-prepend\">\n                    <span class=\"input-group-text\"\n                      style=\"width: 150px;\">{{thisTB[rowIndex][\"Current Year Adjustment\"][2][\"name\"]}}</span>\n                  </div>\n                  <input type=\"number\" step=\"1.0\" class=\"form-control\" aria-describedby=\"basic-addon3\"\n                  [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][2][\"value\"]' />\n                </div>\n                <div class=\"input-group \">\n                  <div class=\"input-group-prepend\">\n                    <span class=\"input-group-text\"\n                      style=\"width: 150px;\">{{thisTB[rowIndex][\"Current Year Adjustment\"][3][\"name\"]}}</span>\n                  </div>\n                  <input type=\"number\" step=\"1.0\" class=\"form-control\" aria-describedby=\"basic-addon3\"\n                  [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][3][\"value\"]' />\n                </div>\n                <div class=\"input-group \">\n                  <div class=\"input-group-prepend\">\n                    <input type=\"text\" class=\"form-control\" style=\"width: 150px;\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][4][\"name\"]' />\n                  </div>\n                  <input type=\"number\" step=\"1.0\" class=\"form-control\" aria-describedby=\"basic-addon3\"\n                  [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][4][\"value\"]' />\n                </div>\n                <div class=\"input-group \">\n                  <div class=\"input-group-prepend\">\n                    <input type=\"text\" class=\"form-control\" style=\"width: 150px;\" aria-describedby=\"basic-addon3\"\n                    [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][5][\"name\"]' />\n                  </div>\n                  <input type=\"number\" step=\"1.0\" class=\"form-control\" aria-describedby=\"basic-addon3\"\n                  [(ngModel)]='thisTB[rowIndex][\"Current Year Adjustment\"][5][\"value\"]' />\n                </div>\n              </accordion-group>\n            </accordion>\n          </ng-template>\n        </ngx-datatable-column>\n\n        <ngx-datatable-column [sortable]=\"false\" maxWidth=\"100\" name=\"Current Year Audit\">\n          <ng-template let-column=\"column\" ngx-datatable-header-template>\n            <div class=\"text-center\"> Current Year <br> Audit </div>\n          </ng-template>\n          <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n            <input type=\"text\" class=\"form-control\" id=\"basic-url\" aria-describedby=\"basic-addon3\"\n            [(ngModel)]='thisTB[rowIndex][\"Current Year Audit\"]' />\n          </ng-template>\n        </ngx-datatable-column>\n      </ngx-datatable>\n      -->\n      <!-- \n    </accordion-group>\n    \n\n  </accordion>\n  -->\n  <hr/>\n\n  <button type=\"button\" class=\"btn btn-primary btn-lg float-left\" (click)=\"genDocSend()\" >\n    Proceed to Adjustments\n  </button>\n\n</div>\n\n<div class=\"overlay-button\">\n  <div class=\"btn-group-vertical float-right\">\n  \n\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scrollToTop()\" >\n  Top\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input228')\" >\n  Goodwill\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input495')\" >\n  Time deposits\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input576')\" >\n  Finance lease\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input690')\" >\n  Reserved 3 (equity)\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input693')\" >\n  Income\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input738')\" >\n  Cost of services\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input741')\" >\n  Other income\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input762')\" >\n  Operating expenses\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input1368')\" >\n  Finance costs\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input1386')\" >\n  Income tax expense\n</button>\n<button type=\"button\" class=\"btn btn-primary \" (click)=\"scroll('input1392')\" >\n  Bottom\n</button> \n\n\n</div>\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/views/audit/auditTBAdj.component.html":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/views/audit/auditTBAdj.component.html ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n<div class=\"animated fadeIn\">\n  <accordion>\n    <accordion-group heading=\"TB Summary\" [isOpen]=\"true\">\n      <table class=\"table-condensed\">\n        <thead>\n          <tr class=\"table-condensed\">\n            <th >#</th>\n            <th >Account break down</th>\n            <th >Group as per audit record</th>\n            <th >Last Year Audit</th>\n            <th >Current Year Per Client</th>\n          </tr>\n        </thead>\n        <tbody>\n          <ng-container *ngFor=\"let row of thisTB; index as i\" >\n            <tr class=\"table-condensed\" *ngIf=\"row['Last Year Audit'] || row['Current Year Per Client'] \">\n              <td class=\"table-condensed\">{{i}}</td>\n              <td class=\"table-condensed\" width=\"300px\">{{row[\"Account break down\"]}} </td>\n              <td class=\"table-condensed\" width=\"300px\">{{row[\"Group as per audit record\"]}}</td>\n              <td class=\"table-condensed\" width=\"200px\">{{row[\"Last Year Audit\"]}}</td>\n              <td class=\"table-condensed\" width=\"200px\">{{row[\"Current Year Per Client\"]}}</td>\n            </tr>\n          </ng-container>\n          <tr >\n            <td class=\"table-condensed\" colspan=\"5\"><hr/></td>\n          </tr>\n          <tr >\n            <td class=\"table-condensed\">(Profit)/ Loss</td>\n            <td class=\"table-condensed\" width=\"300px\"></td>\n            <td class=\"table-condensed\" width=\"300px\"></td>\n            <td class=\"table-condensed\" width=\"200px\">{{getSumLA() | number:'2.2-2'}}</td>\n            <td class=\"table-condensed\" width=\"200px\">{{getSumCA() | number:'2.2-2'}}</td>\n          </tr>\n        </tbody>\n      </table>\n      </accordion-group>\n      <accordion-group heading=\"Addjustment\" [isOpen]=\"true\">\n        <table class=\"table-condensed\">\n          <thead>\n            <tr class=\"table-condensed\">\n              <th >#</th>\n              <th width=\"400px\">Account break down / Group as per audit record </th>\n              <th width=\"300px\">Adjustment Type</th>\n              <th width=\"200px\">Adjustment Value</th>\n              <th width=\"100px\"></th>\n            </tr>\n          </thead>\n          <tbody>\n            <ng-container *ngFor=\"let row of thisAdjustment; index as i\" >\n              <tr class=\"table-condensed\">\n                <td class=\"table-condensed\">{{i}}</td>\n                <td> \n                  \n                     <select class=\"custom-select\">\n                       <ng-container *ngFor=\"let row of thisTB; index as i\">\n                      <option value=\"{{index}}\" *ngIf=\"row['Last Year Audit'] || row['Current Year Per Client'] \">\n                        {{row[\"Account break down\"]}} / {{row[\"Group as per audit record\"]}}\n                      </option>\n                     </ng-container>\n                    </select>\n                </td>\n                <td class=\"table-condensed\" width=\"300px\">\n                  <input [(ngModel)]='row[\"Account\"]' [typeahead]=\"thisAdjustmentTypes\" [typeaheadMinLength]=\"0\"\n                     class=\"form-control\"></td>\n                <td class=\"table-condensed\" width=\"200px\"><input style=\"width:100%\"  type=\"number\" step=\"1.0\"  class=\".input-sm\" [(ngModel)]='row[\"Adjustment\"]' ng-model-options=\"{'updateOn': 'default blur', 'debounce': { 'default': 250, 'blur': 0 }}\" /></td>\n                <td class=\"table-condensed\" width=\"200px\"><button type=\"button\" class=\"btn btn-primary\" (click)=\"addAddjustment(i+1)\" >\n                  + \n                </button></td>\n              </tr>\n            </ng-container>\n            <tr >\n              <td class=\"table-condensed\" colspan=\"5\"><hr/></td>\n            </tr>\n            <tr >\n              <td class=\"table-condensed\">Balance</td>\n              <td class=\"table-condensed\" width=\"400px\"></td>\n              <td class=\"table-condensed\" width=\"300px\"></td>\n              <td class=\"table-condensed\" width=\"200px\">{{getSumAdjustment() | number:'2.2-2'}}</td>\n              <td class=\"table-condensed\" width=\"100px\"></td>\n            </tr>\n          </tbody>\n        </table>\n        </accordion-group>\n      </accordion>\n\n  <hr/>\n\n  <button type=\"button\" class=\"btn btn-primary btn-lg float-left\" (click)=\"genDocSend()\" >\n    Proceed to Adjustments\n  </button>\n\n</div>\n\n");
 
 /***/ }),
 
@@ -82,7 +95,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auditCoInfo_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auditCoInfo.component */ "./src/app/views/audit/auditCoInfo.component.ts");
 /* harmony import */ var _auditPreAuditS1_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auditPreAuditS1.component */ "./src/app/views/audit/auditPreAuditS1.component.ts");
 /* harmony import */ var _auditTB_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auditTB.component */ "./src/app/views/audit/auditTB.component.ts");
-/* harmony import */ var _auditTracking_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./auditTracking.component */ "./src/app/views/audit/auditTracking.component.ts");
+/* harmony import */ var _auditTBAdj_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./auditTBAdj.component */ "./src/app/views/audit/auditTBAdj.component.ts");
+/* harmony import */ var _auditTracking_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./auditTracking.component */ "./src/app/views/audit/auditTracking.component.ts");
+
 
 
 
@@ -175,22 +190,47 @@ var routes = [
         ]
     },
     {
+        path: 'TBAdj',
+        component: _auditTBAdj_component__WEBPACK_IMPORTED_MODULE_7__["AuditTBAdjComponent"],
+        data: {
+            title: 'Audit / 3. Input TB Adjustment'
+        },
+        children: [
+            {
+                path: ':id',
+                component: _auditTBAdj_component__WEBPACK_IMPORTED_MODULE_7__["AuditTBAdjComponent"],
+                data: {
+                    title: 'Audit / 3. Input TB Adjustment'
+                },
+                children: [
+                    {
+                        path: ':year',
+                        component: _auditTBAdj_component__WEBPACK_IMPORTED_MODULE_7__["AuditTBAdjComponent"],
+                        data: {
+                            title: 'Audit -> 3. Input TB Adjustment'
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
         path: 'tracking',
-        component: _auditTracking_component__WEBPACK_IMPORTED_MODULE_7__["AuditTrackingComponent"],
+        component: _auditTracking_component__WEBPACK_IMPORTED_MODULE_8__["AuditTrackingComponent"],
         data: {
             title: 'Audit / 3. Document Tracking'
         },
         children: [
             {
                 path: ':id',
-                component: _auditTracking_component__WEBPACK_IMPORTED_MODULE_7__["AuditTrackingComponent"],
+                component: _auditTracking_component__WEBPACK_IMPORTED_MODULE_8__["AuditTrackingComponent"],
                 data: {
                     title: 'Audit / 3. Document Tracking'
                 },
                 children: [
                     {
                         path: ':year',
-                        component: _auditTracking_component__WEBPACK_IMPORTED_MODULE_7__["AuditTrackingComponent"],
+                        component: _auditTracking_component__WEBPACK_IMPORTED_MODULE_8__["AuditTrackingComponent"],
                         data: {
                             title: 'Audit -> 3. Document Tracking'
                         }
@@ -408,8 +448,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auditCoInfo_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./auditCoInfo.component */ "./src/app/views/audit/auditCoInfo.component.ts");
 /* harmony import */ var _auditPreAuditS1_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./auditPreAuditS1.component */ "./src/app/views/audit/auditPreAuditS1.component.ts");
 /* harmony import */ var _auditTB_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./auditTB.component */ "./src/app/views/audit/auditTB.component.ts");
-/* harmony import */ var _auditTracking_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./auditTracking.component */ "./src/app/views/audit/auditTracking.component.ts");
-/* harmony import */ var _audit_routing_module__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./audit-routing.module */ "./src/app/views/audit/audit-routing.module.ts");
+/* harmony import */ var _auditTBAdj_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./auditTBAdj.component */ "./src/app/views/audit/auditTBAdj.component.ts");
+/* harmony import */ var _auditTracking_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./auditTracking.component */ "./src/app/views/audit/auditTracking.component.ts");
+/* harmony import */ var _audit_routing_module__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./audit-routing.module */ "./src/app/views/audit/audit-routing.module.ts");
+
 
 
 
@@ -435,7 +477,7 @@ var AuditModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             imports: [
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
-                _audit_routing_module__WEBPACK_IMPORTED_MODULE_17__["AuditRoutingModule"],
+                _audit_routing_module__WEBPACK_IMPORTED_MODULE_18__["AuditRoutingModule"],
                 ng2_charts__WEBPACK_IMPORTED_MODULE_3__["ChartsModule"],
                 ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_4__["BsDropdownModule"],
                 _swimlane_ngx_datatable__WEBPACK_IMPORTED_MODULE_8__["NgxDatatableModule"],
@@ -446,7 +488,7 @@ var AuditModule = /** @class */ (function () {
                 ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_7__["BsDatepickerModule"].forRoot(),
                 ngx_bootstrap_buttons__WEBPACK_IMPORTED_MODULE_5__["ButtonsModule"].forRoot()
             ],
-            declarations: [_audit_component__WEBPACK_IMPORTED_MODULE_12__["AuditComponent"], _auditCoInfo_component__WEBPACK_IMPORTED_MODULE_13__["AuditCoInfoComponent"], _auditPreAuditS1_component__WEBPACK_IMPORTED_MODULE_14__["AuditPreAuditS1Component"], _auditTB_component__WEBPACK_IMPORTED_MODULE_15__["AuditTBComponent"], _auditTracking_component__WEBPACK_IMPORTED_MODULE_16__["AuditTrackingComponent"]]
+            declarations: [_audit_component__WEBPACK_IMPORTED_MODULE_12__["AuditComponent"], _auditCoInfo_component__WEBPACK_IMPORTED_MODULE_13__["AuditCoInfoComponent"], _auditPreAuditS1_component__WEBPACK_IMPORTED_MODULE_14__["AuditPreAuditS1Component"], _auditTB_component__WEBPACK_IMPORTED_MODULE_15__["AuditTBComponent"], _auditTBAdj_component__WEBPACK_IMPORTED_MODULE_16__["AuditTBAdjComponent"], _auditTracking_component__WEBPACK_IMPORTED_MODULE_17__["AuditTrackingComponent"]]
         })
     ], AuditModule);
     return AuditModule;
@@ -755,6 +797,14 @@ var AuditPreAuditS1Component = /** @class */ (function () {
         ];
         console.log('contructing AuditCoInfoComponent');
     }
+    AuditPreAuditS1Component.prototype.getLinksToUpload = function () {
+        var linkContent = {};
+        linkContent['Company Name'] = this.accountInfo['Company Name'];
+        linkContent['Upload Type'] = "PreAudit";
+        linkContent['Type Details'] = {};
+        linkContent['Type Details']['Audit Year'] = this.currentYearString;
+        return window.location.href.split('#')[0] + "#/upload?id=" + btoa(JSON.stringify(linkContent));
+    };
     Object.defineProperty(AuditPreAuditS1Component.prototype, "documentContentHeader", {
         get: function () {
             var returnString = '';
@@ -770,10 +820,31 @@ var AuditPreAuditS1Component = /** @class */ (function () {
         configurable: true
     });
     AuditPreAuditS1Component.prototype.requestDocument = function () {
+        this.document['documentRequestList'] = this.documentRequestList;
+        var cnt = 0;
+        for (var i = 0; i < this.documentRequestList.length; i++) {
+            if (this.documentRequestList[i]['Asked']) {
+                cnt++;
+            }
+        }
         this.document['sentDate'] = new Date();
+        this.document['documentAskedCount'] = cnt;
+        var documents = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spreadArrays"])(this.auditInfo['documents']);
+        if (this.auditInfo['documents']) {
+            documents.unshift(this.document);
+            this.auditInfo['documents'] = documents;
+        }
+        else {
+            documents.push(this.document);
+            this.auditInfo['documents'] = documents;
+        }
+        this.document = JSON.parse(JSON.stringify(this.document));
+        localStorage.setItem('accountList', JSON.stringify(this.accountList));
     };
     AuditPreAuditS1Component.prototype.confirmDocument = function () {
         console.log("next");
+        this.auditInfo['Audit Status'] = "2. Input TB";
+        localStorage.setItem('accountList', JSON.stringify(this.accountList));
         this.router.navigate(['audit', 'TB', this.accountInfo['Company Name'], this.currentYearString]);
     };
     AuditPreAuditS1Component.prototype.ngOnInit = function () {
@@ -810,6 +881,10 @@ var AuditPreAuditS1Component = /** @class */ (function () {
             }
             if (_this.accountInfo['audit'] && _this.accountInfo['audit'][_this.currentYearString]) {
                 _this.auditInfo = _this.accountInfo['audit'][_this.currentYearString];
+            }
+            if (_this.auditInfo['documents'] && _this.auditInfo['documents'][0]) {
+                _this.document = JSON.parse(JSON.stringify(_this.auditInfo['documents'][0]));
+                _this.documentRequestList = _this.document['documentRequestList'];
             }
         });
     };
@@ -882,7 +957,7 @@ var AuditTBComponent = /** @class */ (function () {
     AuditTBComponent.prototype.fetch = function (cb) {
         var req = new XMLHttpRequest();
         //this.thisStartTime = new Date().getTime();
-        req.open('GET', "assets/data/TBTemplate.json");
+        req.open('GET', 'assets/data/TBTemplate.json');
         req.onload = function () {
             //this.thisEndTime = new Date().getTime();
             //console.log("!!!!!! SSSSSSSSSSSSSSSSSSSS  used1:"+( (this.thisEndTime -this.thisStartTime)  / 1000.0 )+" seconds");
@@ -894,7 +969,13 @@ var AuditTBComponent = /** @class */ (function () {
     };
     AuditTBComponent.prototype.genDocSend = function () {
         this.auditInfo['TB'] = this.thisTB;
+        if (!this.accountInfo['audit'])
+            this.accountInfo['audit'] = {};
+        if (!this.accountInfo['audit'][this.currentYearString])
+            this.accountInfo['audit'][this.currentYearString] = {};
+        this.accountInfo['audit'][this.currentYearString]['TB'] = this.thisTB;
         localStorage.setItem('accountList', JSON.stringify(this.accountList));
+        this.router.navigate(['audit', 'TBAdj', this.accountInfo['Company Name'], this.currentYearString]);
         return;
     };
     AuditTBComponent.prototype.scroll = function (id) {
@@ -924,6 +1005,8 @@ var AuditTBComponent = /** @class */ (function () {
     };
     AuditTBComponent.prototype.getSumLA = function () {
         var sum = 0.0;
+        if (!this.thisTB)
+            return sum;
         for (var _i = 0, _a = this.thisTB; _i < _a.length; _i++) {
             var rawRecord = _a[_i];
             if (rawRecord['Last Year Audit']) {
@@ -934,6 +1017,8 @@ var AuditTBComponent = /** @class */ (function () {
     };
     AuditTBComponent.prototype.getSumCA = function () {
         var sum = 0.0;
+        if (!this.thisTB)
+            return sum;
         for (var _i = 0, _a = this.thisTB; _i < _a.length; _i++) {
             var rawRecord = _a[_i];
             if (rawRecord['Current Year Pe Client']) {
@@ -995,6 +1080,7 @@ var AuditTBComponent = /** @class */ (function () {
                 _this.auditInfo = _this.accountInfo['audit'][_this.currentYearString];
             }
             if (!_this.auditInfo['TB']) {
+                console.log('fetching defaults:');
                 _this.fetch(function (data) {
                     _this.thisTB = data;
                 });
@@ -1018,6 +1104,224 @@ var AuditTBComponent = /** @class */ (function () {
         Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["ViewportScroller"]])
     ], AuditTBComponent);
     return AuditTBComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/views/audit/auditTBAdj.component.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/views/audit/auditTBAdj.component.ts ***!
+  \*****************************************************/
+/*! exports provided: AuditTBAdjComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuditTBAdjComponent", function() { return AuditTBAdjComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+
+var AuditTBAdjComponent = /** @class */ (function () {
+    function AuditTBAdjComponent(route, router, elementRef, viewportScroller) {
+        this.route = route;
+        this.router = router;
+        this.elementRef = elementRef;
+        this.viewportScroller = viewportScroller;
+        this.customClass = 'customClass';
+        this.accountDetail = {};
+        this.auditInfo = {};
+        this.accountList = [];
+        this.accountInfo = {};
+        this.myroute = {};
+        this.thisAdjustment = [{ "account": "", "type": "", "Adjustment": "" }];
+        this.thisAdjustmentTypes = ["Opening adjustments", "Exchange difference", "Audit fee", "Depreciation"];
+        this.thisHeaders = [
+            'Account break down',
+            'Group as per audit record',
+            'Last Year Audit',
+            'Current Year Audit',
+            'Current Year Pe Client',
+            'Current Year Adjustment',
+            'Current Year Audit',
+        ];
+        console.log('contructing AuditTBAdjComponent');
+    }
+    //thisStartTime = new Date().getTime();
+    //thisEndTime = new Date().getTime();
+    // adjustment for Opening Adjustment
+    // adjustment for Exchange Difference
+    // adjustment for Audit Fee
+    // adjustment for Depreciation
+    AuditTBAdjComponent.prototype.addAddjustment = function (thisIndex) {
+        var temp = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spreadArrays"])(this.thisAdjustment);
+        console.log("thisIndex: " + thisIndex);
+        var myindex = thisIndex ? thisIndex : temp.length;
+        console.log("myindex: " + myindex);
+        temp.splice(myindex, 0, { "account": "", "type": "", "Adjustment": "" });
+        this.thisAdjustment = temp;
+    };
+    AuditTBAdjComponent.prototype.fetch = function (cb) {
+        var req = new XMLHttpRequest();
+        //this.thisStartTime = new Date().getTime();
+        req.open('GET', "assets/data/TBTemplate.json");
+        req.onload = function () {
+            //this.thisEndTime = new Date().getTime();
+            //console.log("!!!!!! SSSSSSSSSSSSSSSSSSSS  used1:"+( (this.thisEndTime -this.thisStartTime)  / 1000.0 )+" seconds");
+            cb(JSON.parse(req.response));
+            //this.thisEndTime = new Date().getTime();
+            //console.log("!!!!!! SSSSSSSSSSSSSSSSSSSS  used:"+( (this.thisEndTime -this.thisStartTime)  / 1000.0 )+" seconds");
+        };
+        req.send();
+    };
+    AuditTBAdjComponent.prototype.genDocSend = function () {
+        this.auditInfo['TB'] = this.thisTB;
+        localStorage.setItem('accountList', JSON.stringify(this.accountList));
+        return;
+    };
+    AuditTBAdjComponent.prototype.scroll = function (id) {
+        this.viewportScroller.scrollToAnchor(id);
+    };
+    AuditTBAdjComponent.prototype.scrollToTop = function () {
+        this.viewportScroller.scrollToPosition([0, 0]);
+    };
+    AuditTBAdjComponent.prototype.keytab = function (event) {
+        event.preventDefault();
+        var myid = event.srcElement.attributes.id.nodeValue;
+        console.log("id0: " + myid.replace("input", ""));
+        var myidInt = parseInt(myid.replace("input", ""));
+        console.log("id1: " + myidInt);
+        console.log("id2: " + (myidInt + 1));
+        document.getElementById('input' + (myidInt + 1)).focus();
+        // event.preventDefault();
+        // let element = event.srcElement.nextElementSibling; // get the sibling element
+        // if(element == null) {  // check if its null
+        //   console.log("haha");
+        //   return;
+        // }
+        // else {
+        //   console.log("hehe");
+        //     element.focus();   // focus if not null
+        // }
+    };
+    AuditTBAdjComponent.prototype.getSumAdjustment = function () {
+        var sum = 0.0;
+        if (!this.thisAdjustment)
+            return sum;
+        for (var _i = 0, _a = this.thisAdjustment; _i < _a.length; _i++) {
+            var rawRecord = _a[_i];
+            if (rawRecord['Adjustment']) {
+                sum += parseFloat(rawRecord['Adjustment']);
+            }
+        }
+        return sum;
+    };
+    AuditTBAdjComponent.prototype.getSumLA = function () {
+        var sum = 0.0;
+        if (!this.thisTB)
+            return sum;
+        for (var _i = 0, _a = this.thisTB; _i < _a.length; _i++) {
+            var rawRecord = _a[_i];
+            if (rawRecord['Last Year Audit']) {
+                sum += parseFloat(rawRecord['Last Year Audit']);
+            }
+        }
+        return sum;
+    };
+    AuditTBAdjComponent.prototype.getSumCA = function () {
+        var sum = 0.0;
+        if (!this.thisTB)
+            return sum;
+        for (var _i = 0, _a = this.thisTB; _i < _a.length; _i++) {
+            var rawRecord = _a[_i];
+            if (rawRecord['Current Year Pe Client']) {
+                sum += parseFloat(rawRecord['Current Year Pe Client']);
+            }
+        }
+        return sum;
+    };
+    AuditTBAdjComponent.prototype.getAdjustmentForHeader = function (input) {
+        var returnStr;
+        returnStr = '';
+        for (var i = 0; i < input.length; i++) {
+            if (input[i]['value']) {
+                returnStr += input[i]['name'] + ': $ ' + input[i]['value'] + ' , ';
+            }
+        }
+        if (returnStr.length > 0) {
+            return 'Adjustment for [' + returnStr + ']';
+        }
+        else {
+            return 'Add Adjustment';
+        }
+    };
+    AuditTBAdjComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        // generate random values for mainChart
+        this.route.params.subscribe(function (params) {
+            // this.id = +params['id']; // (+) converts string 'id' to a number
+            var route = _this.route.snapshot;
+            while (route.firstChild) {
+                route = route.firstChild;
+                _this.myroute = Object.assign(_this.myroute, route.params);
+            }
+            console.log('route: ', JSON.stringify(_this.myroute));
+            _this.id = _this.myroute['id'];
+            _this.currentYearString = _this.myroute['year'];
+            var stringInput = localStorage.getItem('accountList');
+            _this.accountList = JSON.parse(stringInput);
+            if (!_this.accountList) {
+                return;
+            }
+            var foundindex = -1;
+            for (var i = 0; i < _this.accountList.length; i++) {
+                if (_this.accountList[i]['Company Name'] === _this.id) {
+                    foundindex = i;
+                    break;
+                }
+            }
+            if (foundindex < 0) {
+                return;
+            }
+            _this.accountInfo = _this.accountList[foundindex];
+            console.log('accountInfo:' + _this.accountInfo);
+            if (_this.accountInfo['accountDetail']) {
+                _this.accountDetail = _this.accountInfo['accountDetail'];
+            }
+            if (_this.accountInfo['audit'] &&
+                _this.accountInfo['audit'][_this.currentYearString]) {
+                _this.auditInfo = _this.accountInfo['audit'][_this.currentYearString];
+            }
+            if (!_this.auditInfo['TB']) {
+                _this.fetch(function (data) {
+                    _this.thisTB = data;
+                });
+            }
+            else {
+                _this.thisTB = _this.auditInfo['TB'];
+            }
+        });
+    };
+    AuditTBAdjComponent.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] },
+        { type: _angular_common__WEBPACK_IMPORTED_MODULE_2__["ViewportScroller"] }
+    ]; };
+    AuditTBAdjComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./auditTBAdj.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/views/audit/auditTBAdj.component.html")).default,
+            styles: ["\n      .input-group > .input-group-prepend {\n        flex: 0 0 20%;\n      }\n      .input-group .input-group-text {\n        width: 100%;\n      }\n      :host >>> .card.customClass,\n      :host >>> .card.customClass .card-header,\n      :host >>> .panel-heading.customClass,\n      :host >>> .panel.customClass {\n        padding: 0px;\n      }\n\n      :host >>> .panel.customClass .panel-body {\n        padding: 0px;\n      }\n      \n      .table-condensed>thead>tr>th, .table-condensed>tbody>tr>th, .table-condensed>tfoot>tr>th, .table-condensed>thead>tr>td, .table-condensed>tbody>tr>td, .table-condensed>tfoot>tr>td {\n        padding: 1px;\n        }\n        .overlay-button{\n          position: fixed;\n          bottom: 0;\n          right: 0;\n          color: black;\n        }\n    "]
+        }),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["ViewportScroller"]])
+    ], AuditTBAdjComponent);
+    return AuditTBAdjComponent;
 }());
 
 

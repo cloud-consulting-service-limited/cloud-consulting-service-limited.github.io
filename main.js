@@ -367,6 +367,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/views/upload/upload.component.html":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/views/upload/upload.component.html ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"app-body\" *ngIf=\"!isWrongLink\">\n  <main class=\"main d-flex align-items-center\">\n    <div class=\"container\" >\n      <div class=\"row\">\n        <div class=\"mx-auto\" width=\"1000px\" minWidth=\"1000px\">\n          <div class=\"card-group\">\n            <div class=\"card p-4\">\n              <div class=\"card-body\">\n                Please upload the below documents:\n                <br/>\n                <hr>\n                <table>\n                  <thead>\n                    <tr>\n                      <th width=\"400px\">Type</th>\n                      <th width=\"400px\">Uploaded Filenames</th>\n                    </tr>\n                </thead>\n                  <tbody>\n                    <ng-container *ngFor=\"let fileType of requiredFiles\" >\n                      <tr *ngIf=\"fileType['Asked']\" [ngStyle]=\"{ 'background-color': fileType['uploadedFiles']?'greenyellow':'red'}\">\n                        <td >\n                          {{fileType['Chinese']}} - {{fileType['English']}}\n                        </td>\n                        <td>\n                          {{fileType['uploadedFiles']}}\n                        </td>\n                      </tr>\n                    </ng-container>\n                  </tbody>\n                </table>\n\n                <br>\n                <hr>\n                <table>\n                  <thead>\n                    <tr>\n                      <th width=\"200px\">Filename</th>\n                      <th width=\"200px\">Type</th>\n                      <th width=\"400px\">Progress</th>\n                    </tr>\n                </thead>\n                  <tbody>\n                    <ng-container *ngFor=\"let progressInfo of progressInfos\" >\n                      <tr>\n                        <td>\n                          {{ progressInfo.fileName }} \n                        </td>\n                        <td>\n                          <select [(ngModel)]=\"progressInfo.type\" [disabled]=\"progressInfo.value > 0\">\n                            <ng-container *ngFor=\"let type of requiredFiles\">\n                              <option [ngValue]=\"type['English']\"  *ngIf=\"type['Asked']\">{{type['Chinese']}} - {{type['English']}}</option>\n                            </ng-container>\n                          </select>\n                        </td>\n                        <td>\n                          <div class=\"progress\">\n                            <div\n                              class=\"progress-bar progress-bar-info progress-bar-striped\"\n                              role=\"progressbar\"\n                              attr.aria-valuenow=\"{{ progressInfo.value }}\"\n                              aria-valuemin=\"0\"\n                              aria-valuemax=\"100\"\n                              [ngStyle]=\"{ width: progressInfo.value + '%' }\"\n                            >\n                              {{ progressInfo.value }}%\n                            </div>\n                          </div>\n                        </td>\n                      </tr>\n                    </ng-container>\n                  </tbody>\n                </table>\n\n                <hr>\n                \n                <label class=\"btn btn-default\">\n                  <input type=\"file\" multiple (change)=\"selectFiles($event)\" />\n                </label>\n                \n                <button\n                  class=\"btn btn-success\"\n                  [disabled]=\"!selectedFiles || !getAllSelected()\"\n                  (click)=\"uploadFiles()\"\n                >\n                  Upload\n                </button>\n                \n                <div class=\"alert alert-light\" role=\"alert\">{{ message }}</div>\n                \n                \n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </main>\n</div>\n\n\n\n<div class=\"app-body\" *ngIf=\"isWrongLink\">\n  <main class=\"main d-flex align-items-center\">\n    <div class=\"container\" >\n      <div class=\"row\">\n        <div class=\"mx-auto\" width=\"1000px\" minWidth=\"1000px\">\n          <div class=\"card-group\">\n            <div class=\"card p-4\">\n              <div class=\"card-body\">\n                <h1>Wrong Link</h1>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </main>\n</div>\n");
+
+/***/ }),
+
 /***/ "./src/$$_lazy_route_resource lazy recursive":
 /*!**********************************************************!*\
   !*** ./src/$$_lazy_route_resource lazy namespace object ***!
@@ -518,17 +531,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var ngx_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-perfect-scrollbar */ "./node_modules/ngx-perfect-scrollbar/fesm5/ngx-perfect-scrollbar.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _containers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./containers */ "./src/app/containers/index.ts");
-/* harmony import */ var _views_error_404_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./views/error/404.component */ "./src/app/views/error/404.component.ts");
-/* harmony import */ var _views_error_500_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./views/error/500.component */ "./src/app/views/error/500.component.ts");
-/* harmony import */ var _views_login_login_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./views/login/login.component */ "./src/app/views/login/login.component.ts");
-/* harmony import */ var _views_register_register_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./views/register/register.component */ "./src/app/views/register/register.component.ts");
-/* harmony import */ var _coreui_angular__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @coreui/angular */ "./node_modules/@coreui/angular/fesm5/coreui-angular.js");
-/* harmony import */ var _app_routing__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./app.routing */ "./src/app/app.routing.ts");
-/* harmony import */ var ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ngx-bootstrap/dropdown */ "./node_modules/ngx-bootstrap/dropdown/fesm5/ngx-bootstrap-dropdown.js");
-/* harmony import */ var ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ngx-bootstrap/tabs */ "./node_modules/ngx-bootstrap/tabs/fesm5/ngx-bootstrap-tabs.js");
-/* harmony import */ var ng2_charts__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ng2-charts */ "./node_modules/ng2-charts/fesm2015/ng2-charts.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _containers__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./containers */ "./src/app/containers/index.ts");
+/* harmony import */ var _views_error_404_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./views/error/404.component */ "./src/app/views/error/404.component.ts");
+/* harmony import */ var _views_error_500_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./views/error/500.component */ "./src/app/views/error/500.component.ts");
+/* harmony import */ var _views_login_login_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./views/login/login.component */ "./src/app/views/login/login.component.ts");
+/* harmony import */ var _views_upload_upload_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./views/upload/upload.component */ "./src/app/views/upload/upload.component.ts");
+/* harmony import */ var _views_register_register_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./views/register/register.component */ "./src/app/views/register/register.component.ts");
+/* harmony import */ var _coreui_angular__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @coreui/angular */ "./node_modules/@coreui/angular/fesm5/coreui-angular.js");
+/* harmony import */ var _app_routing__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./app.routing */ "./src/app/app.routing.ts");
+/* harmony import */ var ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ngx-bootstrap/dropdown */ "./node_modules/ngx-bootstrap/dropdown/fesm5/ngx-bootstrap-dropdown.js");
+/* harmony import */ var ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ngx-bootstrap/tabs */ "./node_modules/ngx-bootstrap/tabs/fesm5/ngx-bootstrap-tabs.js");
+/* harmony import */ var ng2_charts__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ng2-charts */ "./node_modules/ng2-charts/fesm2015/ng2-charts.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _services_http_interceptor__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./services/http.interceptor */ "./src/app/services/http.interceptor.ts");
+
 
 
 
@@ -545,13 +563,16 @@ var DEFAULT_PERFECT_SCROLLBAR_CONFIG = {
 
 
 
+
 var APP_CONTAINERS = [
-    _containers__WEBPACK_IMPORTED_MODULE_7__["DefaultLayoutComponent"]
+    _containers__WEBPACK_IMPORTED_MODULE_8__["DefaultLayoutComponent"]
 ];
 
 // Import routing module
 
 // Import 3rd party components
+
+
 
 
 
@@ -563,30 +584,34 @@ var AppModule = /** @class */ (function () {
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"],
-                _app_routing__WEBPACK_IMPORTED_MODULE_13__["AppRoutingModule"],
-                _coreui_angular__WEBPACK_IMPORTED_MODULE_12__["AppAsideModule"],
-                _coreui_angular__WEBPACK_IMPORTED_MODULE_12__["AppBreadcrumbModule"].forRoot(),
-                _coreui_angular__WEBPACK_IMPORTED_MODULE_12__["AppFooterModule"],
-                _coreui_angular__WEBPACK_IMPORTED_MODULE_12__["AppHeaderModule"],
-                _coreui_angular__WEBPACK_IMPORTED_MODULE_12__["AppSidebarModule"],
+                _app_routing__WEBPACK_IMPORTED_MODULE_15__["AppRoutingModule"],
+                _coreui_angular__WEBPACK_IMPORTED_MODULE_14__["AppAsideModule"],
+                _coreui_angular__WEBPACK_IMPORTED_MODULE_14__["AppBreadcrumbModule"].forRoot(),
+                _coreui_angular__WEBPACK_IMPORTED_MODULE_14__["AppFooterModule"],
+                _coreui_angular__WEBPACK_IMPORTED_MODULE_14__["AppHeaderModule"],
+                _coreui_angular__WEBPACK_IMPORTED_MODULE_14__["AppSidebarModule"],
                 ngx_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_5__["PerfectScrollbarModule"],
-                ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_14__["BsDropdownModule"].forRoot(),
-                ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_15__["TabsModule"].forRoot(),
-                ng2_charts__WEBPACK_IMPORTED_MODULE_16__["ChartsModule"]
+                ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_16__["BsDropdownModule"].forRoot(),
+                ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_17__["TabsModule"].forRoot(),
+                ng2_charts__WEBPACK_IMPORTED_MODULE_18__["ChartsModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_19__["HttpClientModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"]
             ],
             declarations: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spreadArrays"])([
-                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]
             ], APP_CONTAINERS, [
-                _views_error_404_component__WEBPACK_IMPORTED_MODULE_8__["P404Component"],
-                _views_error_500_component__WEBPACK_IMPORTED_MODULE_9__["P500Component"],
-                _views_login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"],
-                _views_register_register_component__WEBPACK_IMPORTED_MODULE_11__["RegisterComponent"]
+                _views_error_404_component__WEBPACK_IMPORTED_MODULE_9__["P404Component"],
+                _views_error_500_component__WEBPACK_IMPORTED_MODULE_10__["P500Component"],
+                _views_login_login_component__WEBPACK_IMPORTED_MODULE_11__["LoginComponent"],
+                _views_upload_upload_component__WEBPACK_IMPORTED_MODULE_12__["UploadComponent"],
+                _views_register_register_component__WEBPACK_IMPORTED_MODULE_13__["RegisterComponent"]
             ]),
             providers: [{
                     provide: _angular_common__WEBPACK_IMPORTED_MODULE_3__["LocationStrategy"],
-                    useClass: _angular_common__WEBPACK_IMPORTED_MODULE_3__["HashLocationStrategy"]
-                }],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
+                    useClass: _angular_common__WEBPACK_IMPORTED_MODULE_3__["HashLocationStrategy"],
+                }, { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_19__["HTTP_INTERCEPTORS"], useClass: _services_http_interceptor__WEBPACK_IMPORTED_MODULE_20__["MockHttpCalIInterceptor"], multi: true }
+            ],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -615,10 +640,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_error_500_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/error/500.component */ "./src/app/views/error/500.component.ts");
 /* harmony import */ var _views_login_login_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/login/login.component */ "./src/app/views/login/login.component.ts");
 /* harmony import */ var _views_register_register_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./views/register/register.component */ "./src/app/views/register/register.component.ts");
+/* harmony import */ var _views_upload_upload_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./views/upload/upload.component */ "./src/app/views/upload/upload.component.ts");
 
 
 
 // Import Containers
+
 
 
 
@@ -652,6 +679,13 @@ var routes = [
         }
     },
     {
+        path: 'upload',
+        component: _views_upload_upload_component__WEBPACK_IMPORTED_MODULE_8__["UploadComponent"],
+        data: {
+            title: 'Upload Page'
+        }
+    },
+    {
         path: 'register',
         component: _views_register_register_component__WEBPACK_IMPORTED_MODULE_7__["RegisterComponent"],
         data: {
@@ -667,11 +701,11 @@ var routes = [
         children: [
             {
                 path: 'base',
-                loadChildren: function () { return Promise.all(/*! import() | views-base-base-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-audit-audit-module~views-base-base-module~views-newaccount-newaccount-module"), __webpack_require__.e("views-base-base-module")]).then(__webpack_require__.bind(null, /*! ./views/base/base.module */ "./src/app/views/base/base.module.ts")).then(function (m) { return m.BaseModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-base-base-module */[__webpack_require__.e("default~views-audit-audit-module~views-base-base-module~views-newaccount-newaccount-module"), __webpack_require__.e("views-base-base-module")]).then(__webpack_require__.bind(null, /*! ./views/base/base.module */ "./src/app/views/base/base.module.ts")).then(function (m) { return m.BaseModule; }); }
             },
             {
                 path: 'buttons',
-                loadChildren: function () { return Promise.all(/*! import() | views-buttons-buttons-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("views-buttons-buttons-module")]).then(__webpack_require__.bind(null, /*! ./views/buttons/buttons.module */ "./src/app/views/buttons/buttons.module.ts")).then(function (m) { return m.ButtonsModule; }); }
+                loadChildren: function () { return __webpack_require__.e(/*! import() | views-buttons-buttons-module */ "views-buttons-buttons-module").then(__webpack_require__.bind(null, /*! ./views/buttons/buttons.module */ "./src/app/views/buttons/buttons.module.ts")).then(function (m) { return m.ButtonsModule; }); }
             },
             {
                 path: 'charts',
@@ -679,47 +713,47 @@ var routes = [
             },
             {
                 path: 'dashboard',
-                loadChildren: function () { return Promise.all(/*! import() | views-dashboard-dashboard-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-dashboard-dashboard-module")]).then(__webpack_require__.bind(null, /*! ./views/dashboard/dashboard.module */ "./src/app/views/dashboard/dashboard.module.ts")).then(function (m) { return m.DashboardModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-dashboard-dashboard-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-dashboard-dashboard-module")]).then(__webpack_require__.bind(null, /*! ./views/dashboard/dashboard.module */ "./src/app/views/dashboard/dashboard.module.ts")).then(function (m) { return m.DashboardModule; }); }
             },
             {
                 path: 'jobs',
-                loadChildren: function () { return Promise.all(/*! import() | views-jobs-jobs-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("default~views-audit-audit-module~views-jobs-jobs-module~views-newaccount-newaccount-module"), __webpack_require__.e("views-jobs-jobs-module")]).then(__webpack_require__.bind(null, /*! ./views/jobs/jobs.module */ "./src/app/views/jobs/jobs.module.ts")).then(function (m) { return m.JobsModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-jobs-jobs-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("default~views-audit-audit-module~views-jobs-jobs-module~views-newaccount-newaccount-module"), __webpack_require__.e("views-jobs-jobs-module")]).then(__webpack_require__.bind(null, /*! ./views/jobs/jobs.module */ "./src/app/views/jobs/jobs.module.ts")).then(function (m) { return m.JobsModule; }); }
             },
             {
                 path: 'accounting',
-                loadChildren: function () { return Promise.all(/*! import() | views-accounting-accounting-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-accounting-accounting-module")]).then(__webpack_require__.bind(null, /*! ./views/accounting/accounting.module */ "./src/app/views/accounting/accounting.module.ts")).then(function (m) { return m.AccountingModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-accounting-accounting-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-accounting-accounting-module")]).then(__webpack_require__.bind(null, /*! ./views/accounting/accounting.module */ "./src/app/views/accounting/accounting.module.ts")).then(function (m) { return m.AccountingModule; }); }
             },
             {
                 path: 'report',
-                loadChildren: function () { return Promise.all(/*! import() | views-report-report-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-report-report-module")]).then(__webpack_require__.bind(null, /*! ./views/report/report.module */ "./src/app/views/report/report.module.ts")).then(function (m) { return m.ReportModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-report-report-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-report-report-module")]).then(__webpack_require__.bind(null, /*! ./views/report/report.module */ "./src/app/views/report/report.module.ts")).then(function (m) { return m.ReportModule; }); }
             },
             {
                 path: 'ro',
-                loadChildren: function () { return Promise.all(/*! import() | views-ro-ro-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-ro-ro-module")]).then(__webpack_require__.bind(null, /*! ./views/ro/ro.module */ "./src/app/views/ro/ro.module.ts")).then(function (m) { return m.RoModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-ro-ro-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-ro-ro-module")]).then(__webpack_require__.bind(null, /*! ./views/ro/ro.module */ "./src/app/views/ro/ro.module.ts")).then(function (m) { return m.RoModule; }); }
             },
             {
                 path: 'docio',
-                loadChildren: function () { return Promise.all(/*! import() | views-docio-docio-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-docio-docio-module")]).then(__webpack_require__.bind(null, /*! ./views/docio/docio.module */ "./src/app/views/docio/docio.module.ts")).then(function (m) { return m.DocioModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-docio-docio-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-docio-docio-module")]).then(__webpack_require__.bind(null, /*! ./views/docio/docio.module */ "./src/app/views/docio/docio.module.ts")).then(function (m) { return m.DocioModule; }); }
             },
             {
                 path: 'taxreturn',
-                loadChildren: function () { return Promise.all(/*! import() | views-taxreturn-taxreturn-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-taxreturn-taxreturn-module")]).then(__webpack_require__.bind(null, /*! ./views/taxreturn/taxreturn.module */ "./src/app/views/taxreturn/taxreturn.module.ts")).then(function (m) { return m.TaxreturnModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-taxreturn-taxreturn-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-taxreturn-taxreturn-module")]).then(__webpack_require__.bind(null, /*! ./views/taxreturn/taxreturn.module */ "./src/app/views/taxreturn/taxreturn.module.ts")).then(function (m) { return m.TaxreturnModule; }); }
             },
             {
                 path: 'newaccount',
-                loadChildren: function () { return Promise.all(/*! import() | views-newaccount-newaccount-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("default~views-audit-audit-module~views-jobs-jobs-module~views-newaccount-newaccount-module"), __webpack_require__.e("default~views-audit-audit-module~views-newaccount-newaccount-module~views-notifications-notifications-module"), __webpack_require__.e("default~views-audit-audit-module~views-base-base-module~views-newaccount-newaccount-module"), __webpack_require__.e("default~views-audit-audit-module~views-newaccount-newaccount-module"), __webpack_require__.e("views-newaccount-newaccount-module")]).then(__webpack_require__.bind(null, /*! ./views/newaccount/newaccount.module */ "./src/app/views/newaccount/newaccount.module.ts")).then(function (m) { return m.NewaccountModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-newaccount-newaccount-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("default~views-audit-audit-module~views-jobs-jobs-module~views-newaccount-newaccount-module"), __webpack_require__.e("default~views-audit-audit-module~views-newaccount-newaccount-module~views-notifications-notifications-module"), __webpack_require__.e("default~views-audit-audit-module~views-base-base-module~views-newaccount-newaccount-module"), __webpack_require__.e("default~views-audit-audit-module~views-newaccount-newaccount-module"), __webpack_require__.e("views-newaccount-newaccount-module")]).then(__webpack_require__.bind(null, /*! ./views/newaccount/newaccount.module */ "./src/app/views/newaccount/newaccount.module.ts")).then(function (m) { return m.NewaccountModule; }); }
             },
             {
                 path: 'audit',
-                loadChildren: function () { return Promise.all(/*! import() | views-audit-audit-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("default~views-audit-audit-module~views-jobs-jobs-module~views-newaccount-newaccount-module"), __webpack_require__.e("default~views-audit-audit-module~views-newaccount-newaccount-module~views-notifications-notifications-module"), __webpack_require__.e("default~views-audit-audit-module~views-base-base-module~views-newaccount-newaccount-module"), __webpack_require__.e("default~views-audit-audit-module~views-newaccount-newaccount-module"), __webpack_require__.e("views-audit-audit-module")]).then(__webpack_require__.bind(null, /*! ./views/audit/audit.module */ "./src/app/views/audit/audit.module.ts")).then(function (m) { return m.AuditModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-audit-audit-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("default~views-audit-audit-module~views-jobs-jobs-module~views-newaccount-newaccount-module"), __webpack_require__.e("default~views-audit-audit-module~views-newaccount-newaccount-module~views-notifications-notifications-module"), __webpack_require__.e("default~views-audit-audit-module~views-base-base-module~views-newaccount-newaccount-module"), __webpack_require__.e("default~views-audit-audit-module~views-newaccount-newaccount-module"), __webpack_require__.e("views-audit-audit-module")]).then(__webpack_require__.bind(null, /*! ./views/audit/audit.module */ "./src/app/views/audit/audit.module.ts")).then(function (m) { return m.AuditModule; }); }
             },
             {
                 path: 'nar1',
-                loadChildren: function () { return Promise.all(/*! import() | views-nar1-nar1-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-nar1-nar1-module")]).then(__webpack_require__.bind(null, /*! ./views/nar1/nar1.module */ "./src/app/views/nar1/nar1.module.ts")).then(function (m) { return m.Nar1Module; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-nar1-nar1-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-nar1-nar1-module")]).then(__webpack_require__.bind(null, /*! ./views/nar1/nar1.module */ "./src/app/views/nar1/nar1.module.ts")).then(function (m) { return m.Nar1Module; }); }
             },
             {
                 path: 'othercs',
-                loadChildren: function () { return Promise.all(/*! import() | views-othercs-othercs-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-othercs-othercs-module")]).then(__webpack_require__.bind(null, /*! ./views/othercs/othercs.module */ "./src/app/views/othercs/othercs.module.ts")).then(function (m) { return m.OthercsModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-othercs-othercs-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-othercs-othercs-module")]).then(__webpack_require__.bind(null, /*! ./views/othercs/othercs.module */ "./src/app/views/othercs/othercs.module.ts")).then(function (m) { return m.OthercsModule; }); }
             },
             {
                 path: 'icons',
@@ -735,7 +769,7 @@ var routes = [
             },
             {
                 path: 'loaddata',
-                loadChildren: function () { return Promise.all(/*! import() | views-loaddata-loaddata-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-base-base-module~views-but~94275174"), __webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-loaddata-loaddata-module")]).then(__webpack_require__.bind(null, /*! ./views/loaddata/loaddata.module */ "./src/app/views/loaddata/loaddata.module.ts")).then(function (m) { return m.LoaddataModule; }); }
+                loadChildren: function () { return Promise.all(/*! import() | views-loaddata-loaddata-module */[__webpack_require__.e("default~views-accounting-accounting-module~views-audit-audit-module~views-dashboard-dashboard-module~1e78ee5a"), __webpack_require__.e("views-loaddata-loaddata-module")]).then(__webpack_require__.bind(null, /*! ./views/loaddata/loaddata.module */ "./src/app/views/loaddata/loaddata.module.ts")).then(function (m) { return m.LoaddataModule; }); }
             },
             {
                 path: 'widgets',
@@ -827,6 +861,136 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _default_layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./default-layout */ "./src/app/containers/default-layout/index.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DefaultLayoutComponent", function() { return _default_layout__WEBPACK_IMPORTED_MODULE_0__["DefaultLayoutComponent"]; });
 
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/http.interceptor.ts":
+/*!**********************************************!*\
+  !*** ./src/app/services/http.interceptor.ts ***!
+  \**********************************************/
+/*! exports provided: MockHttpCalIInterceptor */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MockHttpCalIInterceptor", function() { return MockHttpCalIInterceptor; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
+
+
+
+var MockHttpCalIInterceptor = /** @class */ (function () {
+    function MockHttpCalIInterceptor(injector) {
+        this.injector = injector;
+    }
+    MockHttpCalIInterceptor.prototype.intercept = function (request, next) {
+        console.log('Intercepted request' + request.url);
+        if (request.url === "http://localhost:8080/upload") {
+            console.log('Loaded from JSON: ' + request.url);
+            var delay = 300; // TODO: inject delay?
+            return createUploadEvents(delay);
+        }
+        return next.handle(request);
+    };
+    MockHttpCalIInterceptor.ctorParameters = function () { return [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"] }
+    ]; };
+    MockHttpCalIInterceptor = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]])
+    ], MockHttpCalIInterceptor);
+    return MockHttpCalIInterceptor;
+}());
+
+/** Create simulation of upload event stream */
+function createUploadEvents(delay) {
+    // Simulate XHR behavior which would provide this information in a ProgressEvent
+    var chunks = 5;
+    var total = 12345678;
+    var chunkSize = Math.ceil(total / chunks);
+    return new rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"](function (observer) {
+        // notify the event stream that the request was sent.
+        observer.next({ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpEventType"].Sent });
+        uploadLoop(0);
+        function uploadLoop(loaded) {
+            // N.B.: Cannot use setInterval or rxjs delay (which uses setInterval)
+            // because e2e test won't complete. A zone thing?
+            // Use setTimeout and tail recursion instead.
+            setTimeout(function () {
+                loaded += chunkSize;
+                if (loaded >= total) {
+                    console.log("!!!!!!!!!!!!!!Completed");
+                    var doneResponse = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpResponse"]({
+                        status: 201,
+                    });
+                    observer.next(doneResponse);
+                    observer.complete();
+                    return;
+                }
+                var progressEvent = {
+                    type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpEventType"].UploadProgress,
+                    loaded: loaded,
+                    total: total
+                };
+                observer.next(progressEvent);
+                uploadLoop(loaded);
+            }, delay);
+        }
+    });
+}
+
+
+/***/ }),
+
+/***/ "./src/app/services/upload-files.service.ts":
+/*!**************************************************!*\
+  !*** ./src/app/services/upload-files.service.ts ***!
+  \**************************************************/
+/*! exports provided: UploadFilesService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UploadFilesService", function() { return UploadFilesService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var UploadFilesService = /** @class */ (function () {
+    function UploadFilesService(http) {
+        this.http = http;
+        this.baseUrl = 'http://localhost:8080';
+    }
+    UploadFilesService.prototype.upload = function (file) {
+        var formData = new FormData();
+        formData.append('file', file);
+        var req = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpRequest"]('POST', this.baseUrl + "/upload", formData, {
+            reportProgress: true,
+            responseType: 'json'
+        });
+        return this.http.request(req);
+    };
+    UploadFilesService.prototype.getFiles = function () {
+        return;
+    };
+    UploadFilesService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    ]; };
+    UploadFilesService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], UploadFilesService);
+    return UploadFilesService;
+}());
 
 
 
@@ -947,6 +1111,174 @@ var RegisterComponent = /** @class */ (function () {
         Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [])
     ], RegisterComponent);
     return RegisterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/views/upload/upload.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/views/upload/upload.component.ts ***!
+  \**************************************************/
+/*! exports provided: UploadComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UploadComponent", function() { return UploadComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_upload_files_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/upload-files.service */ "./src/app/services/upload-files.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+
+
+var UploadComponent = /** @class */ (function () {
+    function UploadComponent(uploadService, activatedRoute) {
+        var _this = this;
+        this.uploadService = uploadService;
+        this.activatedRoute = activatedRoute;
+        this.progressInfos = [];
+        this.message = '';
+        this.accountList = [];
+        this.accountInfo = {};
+        this.accountDetail = {};
+        this.auditInfo = {};
+        this.id = "";
+        this.currentYearString = "";
+        this.linkContent = {};
+        this.isWrongLink = false;
+        this.requiredFiles = [];
+        this.activatedRoute.queryParams.subscribe(function (params) {
+            console.log("param: " + JSON.stringify(params));
+            if (params['id']) {
+                try {
+                    var linkContentString = atob(params['id']);
+                    console.log("linkContentString: " + linkContentString);
+                    _this.linkContent = JSON.parse(linkContentString);
+                    _this.id = _this.linkContent['Company Name'];
+                    _this.currentYearString = _this.linkContent['Type Details']['Audit Year'];
+                    var stringInput = localStorage.getItem('accountList');
+                    _this.accountList = JSON.parse(stringInput);
+                    if (!_this.accountList) {
+                        return;
+                    }
+                    var foundindex = -1;
+                    for (var i = 0; i < _this.accountList.length; i++) {
+                        if (_this.accountList[i]['Company Name'] === _this.id) {
+                            foundindex = i;
+                            break;
+                        }
+                    }
+                    if (foundindex < 0) {
+                        return;
+                    }
+                    _this.accountInfo = _this.accountList[foundindex];
+                    if (_this.accountInfo['accountDetail']) {
+                        _this.accountDetail = _this.accountInfo['accountDetail'];
+                    }
+                    if (_this.accountInfo['audit'] && _this.accountInfo['audit'][_this.currentYearString]) {
+                        _this.auditInfo = _this.accountInfo['audit'][_this.currentYearString];
+                    }
+                    if (_this.auditInfo['documents'] && _this.auditInfo['documents'][0]) {
+                        _this.requiredFiles = _this.auditInfo['documents'][0]['documentRequestList'];
+                    }
+                }
+                catch (Error) {
+                    _this.linkContent = null;
+                    _this.isWrongLink = true;
+                }
+            }
+        });
+    }
+    UploadComponent.prototype.selectFiles = function (event) {
+        this.progressInfos = [];
+        this.selectedFiles = event.target.files;
+        this.sourceElement = event.srcElement;
+        for (var i = 0; i < this.selectedFiles.length; i++) {
+            this.progressInfos[i] = { value: 0, fileName: this.selectedFiles[i].name, type: '' };
+        }
+    };
+    UploadComponent.prototype.uploadFiles = function () {
+        this.message = '';
+        for (var i = 0; i < this.selectedFiles.length; i++) {
+            this.upload(i, this.selectedFiles[i]);
+        }
+        this.sourceElement.value = null;
+        this.selectedFiles = null;
+    };
+    UploadComponent.prototype.getAllSelected = function () {
+        var myReturn = true;
+        for (var _i = 0, _a = this.progressInfos; _i < _a.length; _i++) {
+            var progressInfo = _a[_i];
+            if (!Boolean(progressInfo.type)) {
+                console.log("return bad!!!!!");
+                return false;
+            }
+        }
+        console.log("return good!!!!!");
+        return myReturn;
+    };
+    UploadComponent.prototype.upload = function (idx, file) {
+        //this.progressInfos[idx] = { value: 0, fileName: file.name };
+        var _this = this;
+        this.uploadService.upload(file).subscribe(function (event) {
+            if (event.type === _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpEventType"].UploadProgress) {
+                _this.progressInfos[idx].value = Math.round(100 * event.loaded / event.total);
+            }
+            else if (event instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpResponse"]) {
+                _this.progressInfos[idx].value = 100;
+                _this.fileInfos = _this.uploadService.getFiles();
+                if (!_this.auditInfo['documentsUploaded']) {
+                    _this.auditInfo['documentsUploaded'] = [];
+                }
+                for (var i = 0; i < _this.requiredFiles.length; i++) {
+                    if (_this.requiredFiles[i]['English'] == _this.progressInfos[idx].type) {
+                        var nowDate = new Date();
+                        console.log("TYPE!!::::  " + _this.progressInfos[idx].type);
+                        if (_this.requiredFiles[i]['uploadedFiles'] === undefined)
+                            _this.requiredFiles[i]['uploadedFiles'] = "";
+                        _this.requiredFiles[i]['uploadedFiles'] += _this.progressInfos[idx].fileName + ",  ";
+                        var documentUploaded = { "File Type": _this.progressInfos[idx].type, "File Name": _this.progressInfos[idx].fileName, "Uploaded Date": nowDate };
+                        _this.auditInfo['documentsUploaded'].push(documentUploaded);
+                    }
+                }
+                localStorage.setItem('accountList', JSON.stringify(_this.accountList));
+            }
+        }, function (err) {
+            _this.progressInfos[idx].value = 0;
+            _this.message = 'Could not upload the file:' + file.name;
+        });
+    };
+    UploadComponent.prototype.fetch = function (cb) {
+        var req = new XMLHttpRequest();
+        req.open('GET', 'assets/data/upload.json');
+        req.onload = function () {
+            cb(JSON.parse(req.response));
+        };
+        req.send();
+    };
+    UploadComponent.prototype.ngOnInit = function () {
+        // this.fetch((data) => {
+        //      this.requiredFiles = data;
+        // });
+    };
+    UploadComponent.ctorParameters = function () { return [
+        { type: _services_upload_files_service__WEBPACK_IMPORTED_MODULE_2__["UploadFilesService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] }
+    ]; };
+    UploadComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-dashboard',
+            template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./upload.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/views/upload/upload.component.html")).default
+        }),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_services_upload_files_service__WEBPACK_IMPORTED_MODULE_2__["UploadFilesService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]])
+    ], UploadComponent);
+    return UploadComponent;
 }());
 
 
